@@ -66,32 +66,33 @@ public class logearse {
             JOptionPane.showMessageDialog(null, "Todos los campos son obligatorios.", "Error", JOptionPane.ERROR_MESSAGE);
 
         } else {
-            String sql = "call telefoonos.login('1','" + contrasenia + "','" + nombre + "','" + apellido + "','" + correo + "');";
-            System.out.println("--" + sql);
+//            String sql = "call telefoonos.login('1','" + contrasenia + "','" + nombre + "','" + apellido + "','" + correo + "');";
+//            System.out.println("--" + sql);
+//
+//            try {
+//
+        JOptionPane.showMessageDialog(null, "se guardo exitosamente.", "Error", JOptionPane.ERROR_MESSAGE);
 
-            try {
-
-              
-                ResultSet res = c1.EjecutaSql(sql);
-
-                if (res.getMetaData().getColumnName(1).equals("0")) {
-                    JOptionPane.showMessageDialog(null, "calve incorrecta", "Información", JOptionPane.INFORMATION_MESSAGE);
-
-                } else {
-                    JOptionPane.showMessageDialog(null, "el usuario se guardo correctamente.", "Información", JOptionPane.INFORMATION_MESSAGE);
-
-                }
-
-            } catch (HeadlessException e) {
-                JOptionPane.showMessageDialog(null, "el usuario  no se guardo ", "Información", JOptionPane.ERROR_MESSAGE);
-
-            }
+//               // ResultSet res = c1.EjecutaSql(sql);
+//
+//                if (res.getMetaData().getColumnName(1).equals("0")) {
+//                    JOptionPane.showMessageDialog(null, "calve incorrecta", "Información", JOptionPane.INFORMATION_MESSAGE);
+//
+//                } else {
+//                    JOptionPane.showMessageDialog(null, "el usuario se guardo correctamente.", "Información", JOptionPane.INFORMATION_MESSAGE);
+//
+//                }
+//
+//            } catch (HeadlessException e) {
+//                JOptionPane.showMessageDialog(null, "el usuario  no se guardo ", "Información", JOptionPane.ERROR_MESSAGE);
+//
+//            }
         }
         this.limpiar();
 
     }
 
-    public void logearse() throws ClassNotFoundException {
+    public void logear() throws ClassNotFoundException {
       
         if (correo.isEmpty() || contrasenia.isEmpty()) {
             JOptionPane.showMessageDialog(null, "Tiene campos en blanco", "Error", JOptionPane.ERROR_MESSAGE);
@@ -106,7 +107,7 @@ public class logearse {
             try {
                 if (rs.next()) {
 
-                    //  JOptionPane.showMessageDialog(null, "Usuario correcto");
+                      JOptionPane.showMessageDialog(null, "Usuario correcto");
 //                    Menu p1 = new Menu();
 //                    p1.setVisible(true);
 //                    this.dispose();

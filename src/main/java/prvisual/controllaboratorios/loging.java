@@ -4,17 +4,24 @@
  */
 package prvisual.controllaboratorios;
 
+import java.sql.SQLException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+
 /**
  *
  * @author Jefferson
  */
 public class loging extends javax.swing.JFrame {
+    
+    logearse log = new logearse();
 
     /**
      * Creates new form loging
      */
     public loging() {
         initComponents();
+        setLocationRelativeTo(null);
     }
 
     /**
@@ -31,8 +38,8 @@ public class loging extends javax.swing.JFrame {
         jPanel3 = new javax.swing.JPanel();
         jPanel4 = new javax.swing.JPanel();
         jPanel5 = new javax.swing.JPanel();
-        jTabbedPane1 = new javax.swing.JTabbedPane();
-        jPanel6 = new javax.swing.JPanel();
+        panellog = new javax.swing.JTabbedPane();
+        pnlInicio = new javax.swing.JPanel();
         jSeparator1 = new javax.swing.JSeparator();
         jLabel3 = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
@@ -43,7 +50,7 @@ public class loging extends javax.swing.JFrame {
         btnIngresar = new javax.swing.JButton();
         txtusuario = new javax.swing.JTextField();
         pasClave = new javax.swing.JPasswordField();
-        jPanel7 = new javax.swing.JPanel();
+        pnlRegistro = new javax.swing.JPanel();
         jLabel16 = new javax.swing.JLabel();
         jLabel20 = new javax.swing.JLabel();
         jLabel8 = new javax.swing.JLabel();
@@ -125,24 +132,24 @@ public class loging extends javax.swing.JFrame {
 
         jPanel1.add(jPanel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 50, 40, 440));
 
-        jPanel6.setBackground(new java.awt.Color(255, 255, 255));
-        jPanel6.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-        jPanel6.add(jSeparator1, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 180, 160, 10));
+        pnlInicio.setBackground(new java.awt.Color(255, 255, 255));
+        pnlInicio.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+        pnlInicio.add(jSeparator1, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 180, 160, 10));
 
         jLabel3.setFont(new java.awt.Font("Arial", 2, 14)); // NOI18N
         jLabel3.setText("USUARIO");
-        jPanel6.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 130, -1, -1));
+        pnlInicio.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 130, -1, -1));
 
         jLabel1.setIcon(new javax.swing.ImageIcon("C:\\Users\\Jefferson\\Pictures\\Saved Pictures\\inicio.png")); // NOI18N
-        jPanel6.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 10, 80, 70));
+        pnlInicio.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 10, 80, 70));
 
         jLabel4.setFont(new java.awt.Font("Arial", 3, 14)); // NOI18N
         jLabel4.setText(" INICIAR SESIÓN");
-        jPanel6.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 80, 130, 30));
+        pnlInicio.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 80, 130, 30));
 
         jLabel2.setFont(new java.awt.Font("Arial", 2, 14)); // NOI18N
         jLabel2.setText("CONTRASEÑA");
-        jPanel6.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 200, -1, -1));
+        pnlInicio.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 200, -1, -1));
 
         btnRegistrarse.setBackground(new java.awt.Color(0, 0, 102));
         btnRegistrarse.setForeground(new java.awt.Color(255, 255, 255));
@@ -152,8 +159,8 @@ public class loging extends javax.swing.JFrame {
                 btnRegistrarseActionPerformed(evt);
             }
         });
-        jPanel6.add(btnRegistrarse, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 320, 120, -1));
-        jPanel6.add(jSeparator2, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 250, 150, 10));
+        pnlInicio.add(btnRegistrarse, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 320, 120, -1));
+        pnlInicio.add(jSeparator2, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 250, 150, 10));
 
         btnIngresar.setBackground(new java.awt.Color(0, 0, 102));
         btnIngresar.setForeground(new java.awt.Color(255, 255, 255));
@@ -163,53 +170,53 @@ public class loging extends javax.swing.JFrame {
                 btnIngresarActionPerformed(evt);
             }
         });
-        jPanel6.add(btnIngresar, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 280, -1, -1));
+        pnlInicio.add(btnIngresar, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 280, -1, -1));
 
         txtusuario.setFont(new java.awt.Font("Arial", 2, 14)); // NOI18N
         txtusuario.setHorizontalAlignment(javax.swing.JTextField.CENTER);
         txtusuario.setBorder(null);
-        jPanel6.add(txtusuario, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 160, 160, -1));
+        pnlInicio.add(txtusuario, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 160, 160, -1));
 
         pasClave.setBorder(null);
-        jPanel6.add(pasClave, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 230, 150, 20));
+        pnlInicio.add(pasClave, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 230, 150, 20));
 
-        jTabbedPane1.addTab("tab1", jPanel6);
+        panellog.addTab("inicio", pnlInicio);
 
-        jPanel7.setBackground(new java.awt.Color(255, 255, 255));
-        jPanel7.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+        pnlRegistro.setBackground(new java.awt.Color(255, 255, 255));
+        pnlRegistro.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jLabel16.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
         jLabel16.setText("NOMBRE");
-        jPanel7.add(jLabel16, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 180, -1, -1));
+        pnlRegistro.add(jLabel16, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 180, -1, -1));
 
         jLabel20.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
         jLabel20.setText("APELLIDO");
-        jPanel7.add(jLabel20, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 220, -1, -1));
+        pnlRegistro.add(jLabel20, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 220, -1, -1));
 
         jLabel8.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
         jLabel8.setText("CORREO");
-        jPanel7.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 270, -1, -1));
+        pnlRegistro.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 270, -1, -1));
 
         jLabel7.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
         jLabel7.setText("CONTRASEÑA");
-        jPanel7.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 310, 110, -1));
+        pnlRegistro.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 310, 110, -1));
 
         jLabel5.setFont(new java.awt.Font("Arial", 3, 14)); // NOI18N
         jLabel5.setText("REGISTRARSE");
-        jPanel7.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 30, 110, -1));
-        jPanel7.add(jSeparator3, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 190, 140, 10));
+        pnlRegistro.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 30, 110, -1));
+        pnlRegistro.add(jSeparator3, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 190, 140, 10));
 
         txtNombres.setBorder(null);
-        jPanel7.add(txtNombres, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 170, 140, 20));
+        pnlRegistro.add(txtNombres, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 170, 140, 20));
 
         txtApellidos.setBorder(null);
-        jPanel7.add(txtApellidos, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 220, 140, 20));
+        pnlRegistro.add(txtApellidos, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 220, 140, 20));
 
         txtCorreos.setBorder(null);
-        jPanel7.add(txtCorreos, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 260, 140, 20));
-        jPanel7.add(jSeparator4, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 240, 140, 10));
-        jPanel7.add(jSeparator5, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 280, 140, 10));
-        jPanel7.add(jSeparator6, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 330, 150, 10));
+        pnlRegistro.add(txtCorreos, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 260, 140, 20));
+        pnlRegistro.add(jSeparator4, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 240, 140, 10));
+        pnlRegistro.add(jSeparator5, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 280, 140, 10));
+        pnlRegistro.add(jSeparator6, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 330, 150, 10));
 
         btnGuardar.setBackground(new java.awt.Color(0, 0, 102));
         btnGuardar.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
@@ -220,42 +227,58 @@ public class loging extends javax.swing.JFrame {
                 btnGuardarActionPerformed(evt);
             }
         });
-        jPanel7.add(btnGuardar, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 360, -1, -1));
+        pnlRegistro.add(btnGuardar, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 360, -1, -1));
 
         jLabel6.setIcon(new javax.swing.ImageIcon("C:\\Users\\Jefferson\\Pictures\\Saved Pictures\\loging.png")); // NOI18N
-        jPanel7.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 50, 110, 90));
+        pnlRegistro.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 50, 110, 90));
 
         pswContrasenia.setBorder(null);
-        jPanel7.add(pswContrasenia, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 310, 150, 20));
+        pnlRegistro.add(pswContrasenia, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 310, 150, 20));
 
-        jTabbedPane1.addTab("tab2", jPanel7);
+        panellog.addTab("registro", pnlRegistro);
 
-        jPanel1.add(jTabbedPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 50, 280, 440));
+        jPanel1.add(panellog, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 50, 280, 440));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 681, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 586, Short.MAX_VALUE)
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnRegistrarseActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRegistrarseActionPerformed
-   
+        panellog.setSelectedIndex(1);
     }//GEN-LAST:event_btnRegistrarseActionPerformed
 
     private void btnIngresarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnIngresarActionPerformed
-     
+        log.setCorreo(txtCorreos.getText());
+        log.setContrasenia(String.valueOf(pswContrasenia.getPassword()));
+        
+        try {
+            log.logear();
+        } catch (ClassNotFoundException ex) {
+            Logger.getLogger(loging.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }//GEN-LAST:event_btnIngresarActionPerformed
 
     private void btnGuardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGuardarActionPerformed
-  
+        log.setNombre(txtNombres.getText());
+        log.setApellido(txtApellidos.getText());
+        log.setCorreo(txtCorreos.getText());
+        log.setContrasenia(String.valueOf(pswContrasenia.getPassword()));
+        
+        try {
+            log.guardarDatos();
+        } catch (SQLException ex) {
+            Logger.getLogger(loging.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }//GEN-LAST:event_btnGuardarActionPerformed
 
     /**
@@ -311,8 +334,6 @@ public class loging extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel3;
     private javax.swing.JPanel jPanel4;
     private javax.swing.JPanel jPanel5;
-    private javax.swing.JPanel jPanel6;
-    private javax.swing.JPanel jPanel7;
     private javax.swing.JPanel jPanel8;
     private javax.swing.JSeparator jSeparator1;
     private javax.swing.JSeparator jSeparator2;
@@ -320,8 +341,10 @@ public class loging extends javax.swing.JFrame {
     private javax.swing.JSeparator jSeparator4;
     private javax.swing.JSeparator jSeparator5;
     private javax.swing.JSeparator jSeparator6;
-    private javax.swing.JTabbedPane jTabbedPane1;
+    private javax.swing.JTabbedPane panellog;
     private javax.swing.JPasswordField pasClave;
+    private javax.swing.JPanel pnlInicio;
+    private javax.swing.JPanel pnlRegistro;
     private javax.swing.JPasswordField pswContrasenia;
     private javax.swing.JTextField txtApellidos;
     private javax.swing.JTextField txtCorreos;
