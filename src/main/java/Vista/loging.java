@@ -2,9 +2,10 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
  */
-package prvisual.controllaboratorios;
+package Vista;
 
-import java.sql.SQLException;
+import Controlador.LoginControlador;
+import Modelo.Login;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -13,8 +14,6 @@ import java.util.logging.Logger;
  * @author Jefferson
  */
 public class loging extends javax.swing.JFrame {
-    
-    logearse log = new logearse();
 
     /**
      * Creates new form loging
@@ -45,27 +44,10 @@ public class loging extends javax.swing.JFrame {
         jLabel1 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
-        btnRegistrarse = new javax.swing.JButton();
         jSeparator2 = new javax.swing.JSeparator();
         btnIngresar = new javax.swing.JButton();
+        txtcontrasenia = new javax.swing.JTextField();
         txtusuario = new javax.swing.JTextField();
-        pasClave = new javax.swing.JPasswordField();
-        pnlRegistro = new javax.swing.JPanel();
-        jLabel16 = new javax.swing.JLabel();
-        jLabel20 = new javax.swing.JLabel();
-        jLabel8 = new javax.swing.JLabel();
-        jLabel7 = new javax.swing.JLabel();
-        jLabel5 = new javax.swing.JLabel();
-        jSeparator3 = new javax.swing.JSeparator();
-        txtNombres = new javax.swing.JTextField();
-        txtApellidos = new javax.swing.JTextField();
-        txtCorreos = new javax.swing.JTextField();
-        jSeparator4 = new javax.swing.JSeparator();
-        jSeparator5 = new javax.swing.JSeparator();
-        jSeparator6 = new javax.swing.JSeparator();
-        btnGuardar = new javax.swing.JButton();
-        jLabel6 = new javax.swing.JLabel();
-        pswContrasenia = new javax.swing.JPasswordField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -150,16 +132,6 @@ public class loging extends javax.swing.JFrame {
         jLabel2.setFont(new java.awt.Font("Arial", 2, 14)); // NOI18N
         jLabel2.setText("CONTRASEÑA");
         pnlInicio.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 200, -1, -1));
-
-        btnRegistrarse.setBackground(new java.awt.Color(0, 0, 102));
-        btnRegistrarse.setForeground(new java.awt.Color(255, 255, 255));
-        btnRegistrarse.setText("REGISTRARSE");
-        btnRegistrarse.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnRegistrarseActionPerformed(evt);
-            }
-        });
-        pnlInicio.add(btnRegistrarse, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 320, 120, -1));
         pnlInicio.add(jSeparator2, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 250, 150, 10));
 
         btnIngresar.setBackground(new java.awt.Color(0, 0, 102));
@@ -172,70 +144,17 @@ public class loging extends javax.swing.JFrame {
         });
         pnlInicio.add(btnIngresar, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 280, -1, -1));
 
+        txtcontrasenia.setFont(new java.awt.Font("Arial", 2, 14)); // NOI18N
+        txtcontrasenia.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        txtcontrasenia.setBorder(null);
+        pnlInicio.add(txtcontrasenia, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 230, 160, 20));
+
         txtusuario.setFont(new java.awt.Font("Arial", 2, 14)); // NOI18N
         txtusuario.setHorizontalAlignment(javax.swing.JTextField.CENTER);
         txtusuario.setBorder(null);
         pnlInicio.add(txtusuario, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 160, 160, -1));
 
-        pasClave.setBorder(null);
-        pnlInicio.add(pasClave, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 230, 150, 20));
-
         panellog.addTab("inicio", pnlInicio);
-
-        pnlRegistro.setBackground(new java.awt.Color(255, 255, 255));
-        pnlRegistro.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-
-        jLabel16.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
-        jLabel16.setText("NOMBRE");
-        pnlRegistro.add(jLabel16, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 180, -1, -1));
-
-        jLabel20.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
-        jLabel20.setText("APELLIDO");
-        pnlRegistro.add(jLabel20, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 220, -1, -1));
-
-        jLabel8.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
-        jLabel8.setText("CORREO");
-        pnlRegistro.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 270, -1, -1));
-
-        jLabel7.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
-        jLabel7.setText("CONTRASEÑA");
-        pnlRegistro.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 310, 110, -1));
-
-        jLabel5.setFont(new java.awt.Font("Arial", 3, 14)); // NOI18N
-        jLabel5.setText("REGISTRARSE");
-        pnlRegistro.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 30, 110, -1));
-        pnlRegistro.add(jSeparator3, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 190, 140, 10));
-
-        txtNombres.setBorder(null);
-        pnlRegistro.add(txtNombres, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 170, 140, 20));
-
-        txtApellidos.setBorder(null);
-        pnlRegistro.add(txtApellidos, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 220, 140, 20));
-
-        txtCorreos.setBorder(null);
-        pnlRegistro.add(txtCorreos, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 260, 140, 20));
-        pnlRegistro.add(jSeparator4, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 240, 140, 10));
-        pnlRegistro.add(jSeparator5, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 280, 140, 10));
-        pnlRegistro.add(jSeparator6, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 330, 150, 10));
-
-        btnGuardar.setBackground(new java.awt.Color(0, 0, 102));
-        btnGuardar.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
-        btnGuardar.setForeground(new java.awt.Color(255, 255, 255));
-        btnGuardar.setText("GUARDAR");
-        btnGuardar.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnGuardarActionPerformed(evt);
-            }
-        });
-        pnlRegistro.add(btnGuardar, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 360, -1, -1));
-
-        jLabel6.setIcon(new javax.swing.ImageIcon("C:\\Users\\Jefferson\\Pictures\\Saved Pictures\\loging.png")); // NOI18N
-        pnlRegistro.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 50, 110, 90));
-
-        pswContrasenia.setBorder(null);
-        pnlRegistro.add(pswContrasenia, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 310, 150, 20));
-
-        panellog.addTab("registro", pnlRegistro);
 
         jPanel1.add(panellog, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 50, 280, 440));
 
@@ -253,33 +172,21 @@ public class loging extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void btnRegistrarseActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRegistrarseActionPerformed
-        panellog.setSelectedIndex(1);
-    }//GEN-LAST:event_btnRegistrarseActionPerformed
-
     private void btnIngresarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnIngresarActionPerformed
-        log.setCorreo(txtCorreos.getText());
-        log.setContrasenia(String.valueOf(pswContrasenia.getPassword()));
-        
+        Login log = new Login();
+        log.setCorreo(txtusuario.getText());
+        log.setContrasenia(txtcontrasenia.getText());
+
+        LoginControlador logcont = new LoginControlador();
+
         try {
-            log.logear();
+            logcont.logear(log);
+            //dispose();
         } catch (ClassNotFoundException ex) {
             Logger.getLogger(loging.class.getName()).log(Level.SEVERE, null, ex);
         }
-    }//GEN-LAST:event_btnIngresarActionPerformed
 
-    private void btnGuardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGuardarActionPerformed
-        log.setNombre(txtNombres.getText());
-        log.setApellido(txtApellidos.getText());
-        log.setCorreo(txtCorreos.getText());
-        log.setContrasenia(String.valueOf(pswContrasenia.getPassword()));
-        
-        try {
-            log.guardarDatos();
-        } catch (SQLException ex) {
-            Logger.getLogger(loging.class.getName()).log(Level.SEVERE, null, ex);
-        }
-    }//GEN-LAST:event_btnGuardarActionPerformed
+    }//GEN-LAST:event_btnIngresarActionPerformed
 
     /**
      * @param args the command line arguments
@@ -317,19 +224,11 @@ public class loging extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton btnGuardar;
     private javax.swing.JButton btnIngresar;
-    private javax.swing.JButton btnRegistrarse;
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel16;
     private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel20;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
-    private javax.swing.JLabel jLabel5;
-    private javax.swing.JLabel jLabel6;
-    private javax.swing.JLabel jLabel7;
-    private javax.swing.JLabel jLabel8;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JPanel jPanel4;
@@ -337,18 +236,9 @@ public class loging extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel8;
     private javax.swing.JSeparator jSeparator1;
     private javax.swing.JSeparator jSeparator2;
-    private javax.swing.JSeparator jSeparator3;
-    private javax.swing.JSeparator jSeparator4;
-    private javax.swing.JSeparator jSeparator5;
-    private javax.swing.JSeparator jSeparator6;
     private javax.swing.JTabbedPane panellog;
-    private javax.swing.JPasswordField pasClave;
     private javax.swing.JPanel pnlInicio;
-    private javax.swing.JPanel pnlRegistro;
-    private javax.swing.JPasswordField pswContrasenia;
-    private javax.swing.JTextField txtApellidos;
-    private javax.swing.JTextField txtCorreos;
-    private javax.swing.JTextField txtNombres;
+    private javax.swing.JTextField txtcontrasenia;
     private javax.swing.JTextField txtusuario;
     // End of variables declaration//GEN-END:variables
 }
