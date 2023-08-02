@@ -2,10 +2,10 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
  */
-package Vista;
+package vista;
 
-import Controlador.LoginControlador;
-import Modelo.Login;
+import atributosYmetodos.login;
+import java.sql.SQLException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -13,12 +13,12 @@ import java.util.logging.Logger;
  *
  * @author Jefferson
  */
-public class loging extends javax.swing.JFrame {
+public class logeo extends javax.swing.JFrame {
 
     /**
-     * Creates new form loging
+     * Creates new form logeo
      */
-    public loging() {
+    public logeo() {
         initComponents();
         setLocationRelativeTo(null);
     }
@@ -37,8 +37,6 @@ public class loging extends javax.swing.JFrame {
         jPanel3 = new javax.swing.JPanel();
         jPanel4 = new javax.swing.JPanel();
         jPanel5 = new javax.swing.JPanel();
-        panellog = new javax.swing.JTabbedPane();
-        pnlInicio = new javax.swing.JPanel();
         jSeparator1 = new javax.swing.JSeparator();
         jLabel3 = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
@@ -46,8 +44,8 @@ public class loging extends javax.swing.JFrame {
         jLabel2 = new javax.swing.JLabel();
         jSeparator2 = new javax.swing.JSeparator();
         btnIngresar = new javax.swing.JButton();
-        txtcontrasenia = new javax.swing.JTextField();
         txtusuario = new javax.swing.JTextField();
+        txtcontrasenia = new javax.swing.JPasswordField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -113,26 +111,23 @@ public class loging extends javax.swing.JFrame {
         );
 
         jPanel1.add(jPanel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 50, 40, 440));
-
-        pnlInicio.setBackground(new java.awt.Color(255, 255, 255));
-        pnlInicio.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-        pnlInicio.add(jSeparator1, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 180, 160, 10));
+        jPanel1.add(jSeparator1, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 300, 160, 10));
 
         jLabel3.setFont(new java.awt.Font("Arial", 2, 14)); // NOI18N
         jLabel3.setText("USUARIO");
-        pnlInicio.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 130, -1, -1));
+        jPanel1.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 250, -1, -1));
 
         jLabel1.setIcon(new javax.swing.ImageIcon("C:\\Users\\Jefferson\\Pictures\\Saved Pictures\\inicio.png")); // NOI18N
-        pnlInicio.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 10, 80, 70));
+        jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 90, 80, 70));
 
         jLabel4.setFont(new java.awt.Font("Arial", 3, 14)); // NOI18N
         jLabel4.setText(" INICIAR SESIÓN");
-        pnlInicio.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 80, 130, 30));
+        jPanel1.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 190, 130, 30));
 
         jLabel2.setFont(new java.awt.Font("Arial", 2, 14)); // NOI18N
         jLabel2.setText("CONTRASEÑA");
-        pnlInicio.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 200, -1, -1));
-        pnlInicio.add(jSeparator2, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 250, 150, 10));
+        jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 320, -1, -1));
+        jPanel1.add(jSeparator2, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 370, 150, 10));
 
         btnIngresar.setBackground(new java.awt.Color(0, 0, 102));
         btnIngresar.setForeground(new java.awt.Color(255, 255, 255));
@@ -142,50 +137,43 @@ public class loging extends javax.swing.JFrame {
                 btnIngresarActionPerformed(evt);
             }
         });
-        pnlInicio.add(btnIngresar, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 280, -1, -1));
-
-        txtcontrasenia.setFont(new java.awt.Font("Arial", 2, 14)); // NOI18N
-        txtcontrasenia.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-        txtcontrasenia.setBorder(null);
-        pnlInicio.add(txtcontrasenia, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 230, 160, 20));
+        jPanel1.add(btnIngresar, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 400, -1, -1));
 
         txtusuario.setFont(new java.awt.Font("Arial", 2, 14)); // NOI18N
         txtusuario.setHorizontalAlignment(javax.swing.JTextField.CENTER);
         txtusuario.setBorder(null);
-        pnlInicio.add(txtusuario, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 160, 160, -1));
+        jPanel1.add(txtusuario, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 280, 160, -1));
 
-        panellog.addTab("inicio", pnlInicio);
-
-        jPanel1.add(panellog, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 50, 280, 440));
+        txtcontrasenia.setBorder(null);
+        jPanel1.add(txtcontrasenia, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 350, 150, 20));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 681, Short.MAX_VALUE)
+            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 668, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 586, Short.MAX_VALUE)
+            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 589, Short.MAX_VALUE)
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnIngresarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnIngresarActionPerformed
-        Login log = new Login();
-        log.setCorreo(txtusuario.getText());
-        log.setContrasenia(txtcontrasenia.getText());
-
-        LoginControlador logcont = new LoginControlador();
-
         try {
-            logcont.logear(log);
-            //dispose();
-        } catch (ClassNotFoundException ex) {
-            Logger.getLogger(loging.class.getName()).log(Level.SEVERE, null, ex);
+            login log = new login();
+            log.setUsuario(txtusuario.getText());
+            log.setContrasenia(String.valueOf(txtcontrasenia.getPassword()));
+            log.login();
+        } catch (ClassNotFoundException | SQLException ex) {
+            Logger.getLogger(logeo.class.getName()).log(Level.SEVERE, null, ex);
         }
-
+        
+        
+        
+        
     }//GEN-LAST:event_btnIngresarActionPerformed
 
     /**
@@ -205,20 +193,20 @@ public class loging extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(loging.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(logeo.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(loging.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(logeo.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(loging.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(logeo.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(loging.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(logeo.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new loging().setVisible(true);
+                new logeo().setVisible(true);
             }
         });
     }
@@ -236,9 +224,7 @@ public class loging extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel8;
     private javax.swing.JSeparator jSeparator1;
     private javax.swing.JSeparator jSeparator2;
-    private javax.swing.JTabbedPane panellog;
-    private javax.swing.JPanel pnlInicio;
-    private javax.swing.JTextField txtcontrasenia;
+    private javax.swing.JPasswordField txtcontrasenia;
     private javax.swing.JTextField txtusuario;
     // End of variables declaration//GEN-END:variables
 }
