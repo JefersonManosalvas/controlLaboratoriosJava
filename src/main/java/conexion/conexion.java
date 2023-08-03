@@ -13,7 +13,8 @@ import java.sql.SQLException;
  * @author SAID
  */
 public class conexion {
-       //conexion local
+
+    //conexion local
     public static Connection conectar() {
         try {
             Connection cn = DriverManager.getConnection("jdbc:mysql://localhost/acceso_lab", "root", "j2003");

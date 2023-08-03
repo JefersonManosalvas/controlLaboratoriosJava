@@ -8,10 +8,12 @@ import conecxion.conMysql;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import javax.swing.JOptionPane;
-import prvisual.controllaboratorios.Registrarse;
 import vista.MenuLaboratorios;
 import vista.admFuncional;
-import vista.logeo;
+
+import prvisual.controllaboratorios.Nuevo_usuario;
+import prvisual.controllaboratorios.Registrarse;
+
 
 /**
  *
@@ -21,8 +23,12 @@ public class login {
 
     private String usuario;
     private String contrasenia;
+
     private String rol;
     //private String contrasenia;
+
+
+
 
     public String getUsuario() {
         return usuario;
@@ -51,6 +57,8 @@ public class login {
         ResultSet rs = c1.EjecutaSql(con);
 
         if (getUsuario().isEmpty()) {
+            
+            
             JOptionPane.showMessageDialog(null, "INGRESE EL USUARIO");
         } else if (getContrasenia().isEmpty()) {
             JOptionPane.showMessageDialog(null, "INGRESE LA CONTRASEÑA");
@@ -67,18 +75,21 @@ public class login {
 
 //                String registro = "usuario=" + user + ", contraseña=" + pass + ", intento = Correcto";
 //                guardarRegistro(registro);
-            } else if (existe == 2) {
-                JOptionPane.showMessageDialog(null, "Usuario tecnico");
-//                Menu2 m2 = new Menu2();
-//                m2.setVisible(true);
-//                this.dispose();
-//
-//                String registro = "usuario=" + user + ", contraseña=" + pass + ", intento = Correcto";
-//                guardarRegistro(registro);
+                } else if (existe == 2) {
+
+
+
+                 Nuevo_usuario adj = new Nuevo_usuario();
+                adj.setVisible(true);
+              
+         
+            
+//}
             } else if (existe == 3) {
                 JOptionPane.showMessageDialog(null, "Usuario docente");
 
             } else if (existe == 4) {
+
                 // JOptionPane.showMessageDialog(null, "Usuario estudiante");
 
 //                String nombreUsuarios = rs.getString("nombre");
@@ -90,7 +101,22 @@ public class login {
 //                adminTecnico me= new adminTecnico();
 //                me.setVisible(true);
                 MenuLaboratorios me = new MenuLaboratorios();
-                me.show();
+                me.setVisible(true);
+
+
+               // JOptionPane.showMessageDialog(null, "Usuario estudiante");
+           String nombreUsuario = rs.getString("nombre");
+           String cargoUsuario = rs.getString("rol");
+               // Puedes asignar directamente el valor
+           // Realizar las acciones necesarias para el usuario estudiante
+             Registrarse ad = new Registrarse();
+            ad.setDatosUsuario(nombreUsuario, cargoUsuario);
+            ad.setVisible(true);
+            
+              
+               
+               
+               
 
             } else {
                 JOptionPane.showMessageDialog(null, "Usuario incorrecto");

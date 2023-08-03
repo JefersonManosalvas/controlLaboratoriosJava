@@ -28,8 +28,8 @@ private String nombreUsuario;
     public Registrarse() {
        
         initComponents();
-        this.CargarComboCategorias();
-      
+        //this.CargarComboCategorias();
+       setLocationRelativeTo(null);
     
     
     
@@ -45,107 +45,157 @@ private String nombreUsuario;
     private void initComponents() {
 
         jLabel3 = new javax.swing.JLabel();
-        comboBoxLaboratorio = new javax.swing.JComboBox<>();
-        jComboBox2 = new javax.swing.JComboBox<>();
         jComboBox3 = new javax.swing.JComboBox<>();
-        REGISTRARSE = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
-        txt_nombre = new javax.swing.JTextField();
         txt_rol = new javax.swing.JTextField();
+        txt_nombre1 = new javax.swing.JTextField();
+        jLabel6 = new javax.swing.JLabel();
+        txt_nombre3 = new javax.swing.JTextField();
+        jPanel1 = new javax.swing.JPanel();
+        jPanel2 = new javax.swing.JPanel();
+        jPanel3 = new javax.swing.JPanel();
+        REGISTRARSE = new javax.swing.JButton();
+        jPanel4 = new javax.swing.JPanel();
+        jPanel5 = new javax.swing.JPanel();
+        jPanel6 = new javax.swing.JPanel();
+        txt_nombre2 = new javax.swing.JTextField();
+        txt_nombre = new javax.swing.JTextField();
 
         jLabel3.setText("jLabel3");
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-
-        comboBoxLaboratorio.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
-
-        jComboBox2.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jComboBox3.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        getContentPane().add(jComboBox3, new org.netbeans.lib.awtextra.AbsoluteConstraints(188, 289, 160, 34));
 
+        jLabel1.setText("LABORATORIO");
+        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(47, 118, 93, -1));
+
+        jLabel2.setText("ASIGNATURA");
+        getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(47, 298, 81, -1));
+
+        jLabel4.setText("HORARIO");
+        getContentPane().add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(66, 164, 62, -1));
+
+        jLabel5.setText("REGISTRO DE ASISTENCIA");
+        getContentPane().add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(179, 13, 169, -1));
+
+        txt_rol.setFont(new java.awt.Font("Segoe UI Black", 0, 14)); // NOI18N
+        txt_rol.setEnabled(false);
+        getContentPane().add(txt_rol, new org.netbeans.lib.awtextra.AbsoluteConstraints(24, 66, 116, -1));
+
+        txt_nombre1.setEnabled(false);
+        getContentPane().add(txt_nombre1, new org.netbeans.lib.awtextra.AbsoluteConstraints(179, 161, 169, -1));
+
+        jLabel6.setText("DIA");
+        getContentPane().add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(66, 204, -1, -1));
+
+        txt_nombre3.setEnabled(false);
+        getContentPane().add(txt_nombre3, new org.netbeans.lib.awtextra.AbsoluteConstraints(179, 201, 169, -1));
+
+        jPanel1.setBackground(new java.awt.Color(255, 255, 255));
+        jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jPanel2.setBackground(new java.awt.Color(51, 153, 255));
+
+        javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
+        jPanel2.setLayout(jPanel2Layout);
+        jPanel2Layout.setHorizontalGroup(
+            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 10, Short.MAX_VALUE)
+        );
+        jPanel2Layout.setVerticalGroup(
+            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 450, Short.MAX_VALUE)
+        );
+
+        jPanel1.add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 10, 450));
+
+        jPanel3.setBackground(new java.awt.Color(51, 153, 255));
+
+        javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
+        jPanel3.setLayout(jPanel3Layout);
+        jPanel3Layout.setHorizontalGroup(
+            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 10, Short.MAX_VALUE)
+        );
+        jPanel3Layout.setVerticalGroup(
+            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 450, Short.MAX_VALUE)
+        );
+
+        jPanel1.add(jPanel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 0, -1, -1));
+
+        REGISTRARSE.setBackground(new java.awt.Color(51, 153, 255));
+        REGISTRARSE.setFont(new java.awt.Font("Segoe UI Black", 0, 14)); // NOI18N
+        REGISTRARSE.setForeground(new java.awt.Color(255, 255, 255));
         REGISTRARSE.setText("RESGISTRARSE");
         REGISTRARSE.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 REGISTRARSEActionPerformed(evt);
             }
         });
+        jPanel1.add(REGISTRARSE, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 370, -1, 50));
 
-        jLabel1.setText("LABORATORIO");
+        jPanel4.setBackground(new java.awt.Color(51, 153, 255));
+        jPanel4.setForeground(new java.awt.Color(51, 153, 255));
 
-        jLabel2.setText("ASIGNATURA");
+        javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
+        jPanel4.setLayout(jPanel4Layout);
+        jPanel4Layout.setHorizontalGroup(
+            jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 410, Short.MAX_VALUE)
+        );
+        jPanel4Layout.setVerticalGroup(
+            jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 10, Short.MAX_VALUE)
+        );
 
-        jLabel4.setText("HORARIO");
+        jPanel1.add(jPanel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 410, 10));
 
-        jLabel5.setText("REGISTRO DE ASISTENCIA");
+        jPanel5.setBackground(new java.awt.Color(51, 153, 255));
 
+        javax.swing.GroupLayout jPanel5Layout = new javax.swing.GroupLayout(jPanel5);
+        jPanel5.setLayout(jPanel5Layout);
+        jPanel5Layout.setHorizontalGroup(
+            jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 10, Short.MAX_VALUE)
+        );
+        jPanel5Layout.setVerticalGroup(
+            jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 450, Short.MAX_VALUE)
+        );
+
+        jPanel1.add(jPanel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 0, 10, 450));
+
+        jPanel6.setBackground(new java.awt.Color(51, 153, 255));
+        jPanel6.setForeground(new java.awt.Color(51, 153, 255));
+
+        javax.swing.GroupLayout jPanel6Layout = new javax.swing.GroupLayout(jPanel6);
+        jPanel6.setLayout(jPanel6Layout);
+        jPanel6Layout.setHorizontalGroup(
+            jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 410, Short.MAX_VALUE)
+        );
+        jPanel6Layout.setVerticalGroup(
+            jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 10, Short.MAX_VALUE)
+        );
+
+        jPanel1.add(jPanel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 440, -1, -1));
+
+        txt_nombre2.setEnabled(false);
+        jPanel1.add(txt_nombre2, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 110, 170, -1));
+
+        txt_nombre.setFont(new java.awt.Font("Segoe UI Black", 0, 14)); // NOI18N
         txt_nombre.setEnabled(false);
+        jPanel1.add(txt_nombre, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 20, 120, -1));
 
-        txt_rol.setEnabled(false);
-
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
-        getContentPane().setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(REGISTRARSE)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(layout.createSequentialGroup()
-                                .addGap(47, 47, 47)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 93, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                        .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 62, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 81, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                                .addGap(24, 24, 24)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(txt_rol, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 116, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(txt_nombre, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 116, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(layout.createSequentialGroup()
-                                .addGap(18, 18, 18)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                    .addComponent(comboBoxLaboratorio, 0, 160, Short.MAX_VALUE)
-                                    .addComponent(jComboBox3, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                    .addComponent(jComboBox2, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
-                            .addGroup(layout.createSequentialGroup()
-                                .addGap(39, 39, 39)
-                                .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 169, javax.swing.GroupLayout.PREFERRED_SIZE)))))
-                .addGap(0, 199, Short.MAX_VALUE))
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(13, 13, 13)
-                        .addComponent(jLabel5))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(21, 21, 21)
-                        .addComponent(txt_nombre, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addGap(23, 23, 23)
-                .addComponent(txt_rol, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(comboBoxLaboratorio, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel1))
-                .addGap(32, 32, 32)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jComboBox3, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel2))
-                .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jComboBox2, javax.swing.GroupLayout.PREFERRED_SIZE, 47, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel4))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 106, Short.MAX_VALUE)
-                .addComponent(REGISTRARSE, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(29, 29, 29))
-        );
+        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 370, 450));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -165,7 +215,7 @@ try {
 
   
     ps.setString(1, txt_nombre.getText());
-    ps.setString(2, comboBoxLaboratorio.getSelectedItem().toString());
+    //ps.setString(2, comboBoxLaboratorio.getSelectedItem().toString());
     ps.setInt(3, idUsuario); 
     ps.setString(4, txt_rol.getText());
 
@@ -214,41 +264,49 @@ try {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton REGISTRARSE;
-    private javax.swing.JComboBox<String> comboBoxLaboratorio;
-    private javax.swing.JComboBox<String> jComboBox2;
     private javax.swing.JComboBox<String> jComboBox3;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
+    private javax.swing.JLabel jLabel6;
+    private javax.swing.JPanel jPanel1;
+    private javax.swing.JPanel jPanel2;
+    private javax.swing.JPanel jPanel3;
+    private javax.swing.JPanel jPanel4;
+    private javax.swing.JPanel jPanel5;
+    private javax.swing.JPanel jPanel6;
     private javax.swing.JTextField txt_nombre;
+    private javax.swing.JTextField txt_nombre1;
+    private javax.swing.JTextField txt_nombre2;
+    private javax.swing.JTextField txt_nombre3;
     private javax.swing.JTextField txt_rol;
     // End of variables declaration//GEN-END:variables
 
 
 
-private void CargarComboCategorias() {
-        Connection cn = conexion.conectar();
-        String sql = "select * from laboratorios";
-        Statement st;
-
-        try {
-
-            st = cn.createStatement();
-            ResultSet rs = st.executeQuery(sql);
-            comboBoxLaboratorio.removeAllItems();
-            comboBoxLaboratorio.addItem("Seleccione Laboratorio:");
-            while (rs.next()) {
-                comboBoxLaboratorio.addItem(rs.getString("nombre"));
-            }
-            cn.close();
-
-        } catch (SQLException e) {
-            System.out.println("Error al cargar categorias");
-        }
-  
-}
+//private void CargarComboCategorias() {
+//        Connection cn = conexion.conectar();
+//        String sql = "select * from laboratorios";
+//        Statement st;
+//
+//        try {
+//
+//            st = cn.createStatement();
+//            ResultSet rs = st.executeQuery(sql);
+//            comboBoxLaboratorio.removeAllItems();
+//            comboBoxLaboratorio.addItem("Seleccione Laboratorio:");
+//            while (rs.next()) {
+//                comboBoxLaboratorio.addItem(rs.getString("nombre"));
+//            }
+//            cn.close();
+//
+//        } catch (SQLException e) {
+//            System.out.println("Error al cargar categorias");
+//        }
+//  
+//}
 
   public void setDatosUsuario(String nombre, String cargo) {
         txt_nombre.setText(nombre);
