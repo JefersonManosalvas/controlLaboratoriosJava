@@ -14,7 +14,7 @@ import java.time.LocalDateTime;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JOptionPane;
-import vista.HORARIOS;
+import vista.admFuncional;
 
 /**
  *
@@ -63,7 +63,7 @@ public class login {
 //                m1.setVisible(true);
 //                this.dispose();
 
-                HORARIOS h1 = new HORARIOS();
+                admFuncional h1 = new admFuncional();
                 h1.setVisible(true);
                
 
