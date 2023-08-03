@@ -19,8 +19,11 @@ public class Nuevo_usuario extends javax.swing.JFrame {
      */
     public Nuevo_usuario() {
         initComponents();
+        setLocationRelativeTo(null);
+        
     }
 
+    
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -30,118 +33,155 @@ public class Nuevo_usuario extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        txt_apellidou = new javax.swing.JTextField();
-        txt_nombreu = new javax.swing.JTextField();
-        lblnombreusuario = new javax.swing.JLabel();
-        lblapellidousuario = new javax.swing.JLabel();
-        lblusuario = new javax.swing.JLabel();
-        txt_usuariou = new javax.swing.JTextField();
-        pswusuario = new javax.swing.JPasswordField();
-        lblpasswordusuario = new javax.swing.JLabel();
-        lbltelefonousuario = new javax.swing.JLabel();
-        txt_rol = new javax.swing.JTextField();
+        jPanel1 = new javax.swing.JPanel();
+        jLabel1 = new javax.swing.JLabel();
+        jPanel2 = new javax.swing.JPanel();
+        jPanel3 = new javax.swing.JPanel();
+        jPanel4 = new javax.swing.JPanel();
+        jPanel5 = new javax.swing.JPanel();
         btn_guardarU = new javax.swing.JButton();
+        jLabel2 = new javax.swing.JLabel();
+        lblnombreusuario4 = new javax.swing.JLabel();
+        pswusuario = new javax.swing.JPasswordField();
+        lblnombreusuario2 = new javax.swing.JLabel();
+        txt_usuariou = new javax.swing.JTextField();
+        lblnombreusuario3 = new javax.swing.JLabel();
+        txt_apellidou = new javax.swing.JTextField();
+        lblnombreusuario1 = new javax.swing.JLabel();
+        lblnombreusuario = new javax.swing.JLabel();
+        txt_nombreu = new javax.swing.JTextField();
+        cbx_rol = new javax.swing.JComboBox<>();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setUndecorated(true);
+        getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        lblnombreusuario.setText("Nombre");
+        jPanel1.setBackground(new java.awt.Color(51, 153, 255));
+        jPanel1.setForeground(new java.awt.Color(51, 153, 255));
 
-        lblapellidousuario.setText("Apellido");
+        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
+        jPanel1.setLayout(jPanel1Layout);
+        jPanel1Layout.setHorizontalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 410, Short.MAX_VALUE)
+        );
+        jPanel1Layout.setVerticalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 10, Short.MAX_VALUE)
+        );
 
-        lblusuario.setText("Usuario/cedula");
+        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 410, 10));
 
-        txt_usuariou.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txt_usuariouActionPerformed(evt);
-            }
-        });
+        jLabel1.setFont(new java.awt.Font("Segoe UI Black", 2, 18)); // NOI18N
+        jLabel1.setText("Resgistros de Credenciales");
+        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(66, 14, 265, -1));
 
-        pswusuario.setPreferredSize(new java.awt.Dimension(162, 23));
+        jPanel2.setBackground(new java.awt.Color(51, 153, 255));
 
-        lblpasswordusuario.setText("Password");
+        javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
+        jPanel2.setLayout(jPanel2Layout);
+        jPanel2Layout.setHorizontalGroup(
+            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 10, Short.MAX_VALUE)
+        );
+        jPanel2Layout.setVerticalGroup(
+            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 450, Short.MAX_VALUE)
+        );
 
-        lbltelefonousuario.setText("Rol");
+        getContentPane().add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 10, 450));
 
-        txt_rol.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txt_rolActionPerformed(evt);
-            }
-        });
+        jPanel3.setBackground(new java.awt.Color(51, 153, 255));
 
+        javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
+        jPanel3.setLayout(jPanel3Layout);
+        jPanel3Layout.setHorizontalGroup(
+            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 10, Short.MAX_VALUE)
+        );
+        jPanel3Layout.setVerticalGroup(
+            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 450, Short.MAX_VALUE)
+        );
+
+        getContentPane().add(jPanel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 0, 10, 450));
+
+        jPanel4.setBackground(new java.awt.Color(51, 153, 255));
+        jPanel4.setForeground(new java.awt.Color(51, 153, 255));
+
+        javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
+        jPanel4.setLayout(jPanel4Layout);
+        jPanel4Layout.setHorizontalGroup(
+            jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 410, Short.MAX_VALUE)
+        );
+        jPanel4Layout.setVerticalGroup(
+            jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 10, Short.MAX_VALUE)
+        );
+
+        getContentPane().add(jPanel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 450, 410, 10));
+
+        jPanel5.setBackground(new java.awt.Color(255, 255, 255));
+        jPanel5.setEnabled(false);
+        jPanel5.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        btn_guardarU.setBackground(new java.awt.Color(51, 153, 255));
+        btn_guardarU.setFont(new java.awt.Font("Segoe UI Black", 2, 14)); // NOI18N
+        btn_guardarU.setForeground(new java.awt.Color(255, 255, 255));
         btn_guardarU.setText("Guardar");
         btn_guardarU.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btn_guardarUActionPerformed(evt);
             }
         });
+        jPanel5.add(btn_guardarU, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 360, 171, 40));
 
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
-        getContentPane().setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(27, 27, 27)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(txt_rol, javax.swing.GroupLayout.PREFERRED_SIZE, 162, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(lblusuario)
-                        .addGap(53, 53, 53)
-                        .addComponent(txt_usuariou, javax.swing.GroupLayout.PREFERRED_SIZE, 162, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(99, Short.MAX_VALUE))
-            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(layout.createSequentialGroup()
-                    .addGap(0, 59, Short.MAX_VALUE)
-                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addGroup(layout.createSequentialGroup()
-                            .addComponent(lblnombreusuario, javax.swing.GroupLayout.PREFERRED_SIZE, 54, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGap(46, 46, 46)
-                            .addComponent(txt_nombreu, javax.swing.GroupLayout.PREFERRED_SIZE, 162, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGroup(layout.createSequentialGroup()
-                            .addComponent(lblapellidousuario)
-                            .addGap(54, 54, 54)
-                            .addComponent(txt_apellidou, javax.swing.GroupLayout.PREFERRED_SIZE, 162, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGroup(layout.createSequentialGroup()
-                            .addComponent(lblpasswordusuario)
-                            .addGap(50, 50, 50)
-                            .addComponent(pswusuario, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addComponent(lbltelefonousuario)
-                        .addGroup(layout.createSequentialGroup()
-                            .addGap(90, 90, 90)
-                            .addComponent(btn_guardarU, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                    .addGap(0, 100, Short.MAX_VALUE)))
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(165, 165, 165)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(txt_usuariou, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(lblusuario))
-                .addGap(84, 84, 84)
-                .addComponent(txt_rol, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(165, Short.MAX_VALUE))
-            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(layout.createSequentialGroup()
-                    .addGap(0, 69, Short.MAX_VALUE)
-                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addGroup(layout.createSequentialGroup()
-                            .addGap(10, 10, 10)
-                            .addComponent(lblnombreusuario))
-                        .addComponent(txt_nombreu, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGap(24, 24, 24)
-                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addComponent(lblapellidousuario)
-                        .addComponent(txt_apellidou, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGap(78, 78, 78)
-                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addComponent(lblpasswordusuario)
-                        .addComponent(pswusuario, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGap(27, 27, 27)
-                    .addComponent(lbltelefonousuario, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGap(57, 57, 57)
-                    .addComponent(btn_guardarU, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGap(0, 69, Short.MAX_VALUE)))
-        );
+        jLabel2.setFont(new java.awt.Font("Segoe UI Black", 2, 18)); // NOI18N
+        jLabel2.setText("X");
+        jLabel2.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jLabel2MouseClicked(evt);
+            }
+        });
+        jPanel5.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(371, 0, -1, -1));
+
+        lblnombreusuario4.setFont(new java.awt.Font("Segoe UI Black", 2, 14)); // NOI18N
+        lblnombreusuario4.setText("Rol");
+        jPanel5.add(lblnombreusuario4, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 290, -1, -1));
+
+        pswusuario.setPreferredSize(new java.awt.Dimension(162, 23));
+        jPanel5.add(pswusuario, new org.netbeans.lib.awtextra.AbsoluteConstraints(181, 233, -1, -1));
+
+        lblnombreusuario2.setFont(new java.awt.Font("Segoe UI Black", 2, 14)); // NOI18N
+        lblnombreusuario2.setText("Contraseña");
+        jPanel5.add(lblnombreusuario2, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 233, -1, -1));
+
+        txt_usuariou.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txt_usuariouActionPerformed(evt);
+            }
+        });
+        jPanel5.add(txt_usuariou, new org.netbeans.lib.awtextra.AbsoluteConstraints(181, 173, 162, -1));
+
+        lblnombreusuario3.setFont(new java.awt.Font("Segoe UI Black", 2, 14)); // NOI18N
+        lblnombreusuario3.setText("Usuario/cedula");
+        jPanel5.add(lblnombreusuario3, new org.netbeans.lib.awtextra.AbsoluteConstraints(33, 173, -1, -1));
+        jPanel5.add(txt_apellidou, new org.netbeans.lib.awtextra.AbsoluteConstraints(181, 121, 162, -1));
+
+        lblnombreusuario1.setFont(new java.awt.Font("Segoe UI Black", 2, 14)); // NOI18N
+        lblnombreusuario1.setText("Apellido");
+        jPanel5.add(lblnombreusuario1, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 121, 71, -1));
+
+        lblnombreusuario.setFont(new java.awt.Font("Segoe UI Black", 2, 14)); // NOI18N
+        lblnombreusuario.setText("Nombre");
+        jPanel5.add(lblnombreusuario, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 66, 71, -1));
+        jPanel5.add(txt_nombreu, new org.netbeans.lib.awtextra.AbsoluteConstraints(181, 66, 162, -1));
+
+        cbx_rol.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Ingrese Rol :", "Estudiante", "Docente" }));
+        jPanel5.add(cbx_rol, new org.netbeans.lib.awtextra.AbsoluteConstraints(171, 288, 162, -1));
+
+        getContentPane().add(jPanel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, 390, 440));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -150,14 +190,10 @@ public class Nuevo_usuario extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_txt_usuariouActionPerformed
 
-    private void txt_rolActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txt_rolActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txt_rolActionPerformed
-
     private void btn_guardarUActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_guardarUActionPerformed
 
         if (txt_nombreu.getText().isEmpty()|| txt_apellidou.getText().isEmpty() || txt_usuariou.getText().isEmpty()
-            || pswusuario.getText().isEmpty() || txt_rol.getText().isEmpty()) {
+            || pswusuario.getText().isEmpty()) {
             JOptionPane.showMessageDialog(null, "Complete todos los Campos");
         } else {
             //validamos si el usuario ya existe
@@ -171,7 +207,7 @@ public class Nuevo_usuario extends javax.swing.JFrame {
                 usuario.setApellido(txt_apellidou.getText().trim());
                 usuario.setUsuario(txt_usuariou.getText().trim());
                 usuario.setPassword(pswusuario.getText().trim());
-                usuario.setRol(txt_rol.getText().trim());
+                usuario.setRol(cbx_rol.getSelectedItem().toString());
 
                 if (controlusuario.guardar(usuario)) {
                     JOptionPane.showMessageDialog(null, "Usuario Registrado");
@@ -188,6 +224,10 @@ public class Nuevo_usuario extends javax.swing.JFrame {
         }
 
     }//GEN-LAST:event_btn_guardarUActionPerformed
+
+    private void jLabel2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel2MouseClicked
+         System.exit(0);
+    }//GEN-LAST:event_jLabel2MouseClicked
 
     /**
      * @param args the command line arguments
@@ -227,15 +267,22 @@ public class Nuevo_usuario extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btn_guardarU;
-    private javax.swing.JLabel lblapellidousuario;
+    private javax.swing.JComboBox<String> cbx_rol;
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
+    private javax.swing.JPanel jPanel1;
+    private javax.swing.JPanel jPanel2;
+    private javax.swing.JPanel jPanel3;
+    private javax.swing.JPanel jPanel4;
+    private javax.swing.JPanel jPanel5;
     private javax.swing.JLabel lblnombreusuario;
-    private javax.swing.JLabel lblpasswordusuario;
-    private javax.swing.JLabel lbltelefonousuario;
-    private javax.swing.JLabel lblusuario;
+    private javax.swing.JLabel lblnombreusuario1;
+    private javax.swing.JLabel lblnombreusuario2;
+    private javax.swing.JLabel lblnombreusuario3;
+    private javax.swing.JLabel lblnombreusuario4;
     private javax.swing.JPasswordField pswusuario;
     private javax.swing.JTextField txt_apellidou;
     private javax.swing.JTextField txt_nombreu;
-    private javax.swing.JTextField txt_rol;
     private javax.swing.JTextField txt_usuariou;
     // End of variables declaration//GEN-END:variables
 
@@ -244,7 +291,7 @@ txt_nombreu.setText("");
 txt_apellidou.setText("");
 txt_usuariou.setText("");
 pswusuario.setText("");
-txt_rol.setText("");
+cbx_rol.setActionCommand("");
 
 
 }

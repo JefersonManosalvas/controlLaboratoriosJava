@@ -14,6 +14,7 @@ import java.time.LocalDateTime;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JOptionPane;
+import prvisual.controllaboratorios.Nuevo_usuario;
 import prvisual.controllaboratorios.Registrarse;
 import vista.HORARIOS;
 
@@ -72,14 +73,16 @@ private String rol;
 
 //                String registro = "usuario=" + user + ", contraseña=" + pass + ", intento = Correcto";
 //                guardarRegistro(registro);
-            } else if (existe == 2) {
-                JOptionPane.showMessageDialog(null, "Usuario tecnico");
-//                Menu2 m2 = new Menu2();
-//                m2.setVisible(true);
-//                this.dispose();
-//
-//                String registro = "usuario=" + user + ", contraseña=" + pass + ", intento = Correcto";
-//                guardarRegistro(registro);
+                } else if (existe == 2) {
+
+
+
+                 Nuevo_usuario adj = new Nuevo_usuario();
+                adj.setVisible(true);
+              
+         
+            
+//}
             } else if (existe == 3) {
                 JOptionPane.showMessageDialog(null, "Usuario docente");
 
