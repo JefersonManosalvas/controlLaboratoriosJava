@@ -86,6 +86,7 @@ public final class HORARIOS extends javax.swing.JFrame {
         jPanel1.add(txtHoraini, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 40, 100, -1));
         jPanel1.add(txtMateria, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 30, 100, -1));
 
+        tblaconH.setBackground(new java.awt.Color(153, 255, 153));
         tblaconH.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null},

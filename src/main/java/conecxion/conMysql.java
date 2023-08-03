@@ -18,7 +18,7 @@ public class conMysql {
 
     private String url = "jdbc:mysql://localhost:3306/acceso_lab?zeroDateTimeBehavior=CONVERT_TO_NULL";
     private String usuario = "root";
-    private String clave = "j2003";
+    private String clave = "root";
 
     public ResultSet EjecutaSql(String sql) throws ClassNotFoundException {
         ResultSet resultado = null;

@@ -14,6 +14,7 @@ import java.time.LocalDateTime;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JOptionPane;
+import prvisual.controllaboratorios.Registrarse;
 import vista.HORARIOS;
 
 /**
@@ -24,7 +25,7 @@ public class login {
 
     private String usuario;
     private String contrasenia;
-
+private String rol;
     public String getUsuario() {
         return usuario;
     }
@@ -46,12 +47,14 @@ public class login {
         boolean respuesta = false;
 //        String user = txtuser.getText();
 //        String pass = String.valueOf(txtpssw.getPassword());
-        String con = "call acceso_lab.verificarLogin('" + getUsuario() + "','" + getContrasenia() + "');";
+        String con = "call acceso_lab.verificarLogin1('" + getUsuario() + "','" + getContrasenia() + "');";
         System.out.println("///" + con);
 
         ResultSet rs = c1.EjecutaSql(con);
 
         if (getUsuario().isEmpty()) {
+            
+            
             JOptionPane.showMessageDialog(null, "INGRESE EL USUARIO");
         } else if (getContrasenia().isEmpty()) {
             JOptionPane.showMessageDialog(null, "INGRESE LA CONTRASEÑA");
@@ -81,8 +84,19 @@ public class login {
                 JOptionPane.showMessageDialog(null, "Usuario docente");
 
             } else if (existe == 4) {
-                JOptionPane.showMessageDialog(null, "Usuario estudiante");
-
+               // JOptionPane.showMessageDialog(null, "Usuario estudiante");
+           String nombreUsuario = rs.getString("nombre");
+           String cargoUsuario = rs.getString("rol");
+               // Puedes asignar directamente el valor
+           // Realizar las acciones necesarias para el usuario estudiante
+             Registrarse ad = new Registrarse();
+            ad.setDatosUsuario(nombreUsuario, cargoUsuario);
+            ad.setVisible(true);
+            
+              
+               
+               
+               
             } else {
                 JOptionPane.showMessageDialog(null, "Usuario incorrecto");
 //                String registro = "usuario=" + user + ", contraseña=" + pass + ", intento=Incorrecto";
