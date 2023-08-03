@@ -4,6 +4,8 @@
  */
 package vista;
 
+import atributosYmetodos.login;
+import java.sql.SQLException;
 import java.time.DayOfWeek;
 import java.time.LocalDate;
 import java.time.format.TextStyle;
@@ -17,6 +19,8 @@ import prvisual.controllaboratorios.Registrarse;
  * @author Jefferson
  */
 public class MenuLaboratorios extends javax.swing.JFrame {
+   private String Cedula_est;
+    
 
     /**
      * Creates new form MenuLaboratorios
@@ -24,9 +28,18 @@ public class MenuLaboratorios extends javax.swing.JFrame {
     public MenuLaboratorios() {
         initComponents();
         setLocationRelativeTo(null);
+        
+       
+    
+      
 
     }
-
+    public void setcedula(String cedula){
+      Cedula_est=cedula;
+       
+    }
+    
+    
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -89,9 +102,10 @@ public class MenuLaboratorios extends javax.swing.JFrame {
         Registrarse reg;
         try {
             reg = new Registrarse();
+            reg.consultar(Cedula_est);
             reg.setVisible(true);
             dispose();
-        } catch (ClassNotFoundException ex) {
+        } catch (ClassNotFoundException | SQLException ex) {
             Logger.getLogger(MenuLaboratorios.class.getName()).log(Level.SEVERE, null, ex);
         }
 
@@ -101,9 +115,12 @@ public class MenuLaboratorios extends javax.swing.JFrame {
     private void softwareActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_softwareActionPerformed
         try {
             Registrarse reg = new Registrarse();
+            reg.consultar(Cedula_est);
             reg.setVisible(true);
+            
+            
             dispose();
-        } catch (ClassNotFoundException ex) {
+        } catch (ClassNotFoundException | SQLException ex) {
             Logger.getLogger(MenuLaboratorios.class.getName()).log(Level.SEVERE, null, ex);
         }
 

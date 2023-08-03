@@ -206,14 +206,14 @@ public class Registrarse extends javax.swing.JFrame {
 
         txt_nombre.setFont(new java.awt.Font("Segoe UI Black", 0, 14)); // NOI18N
         txt_nombre.setEnabled(false);
-        jPanel1.add(txt_nombre, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 60, 210, -1));
+        jPanel1.add(txt_nombre, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 110, 210, -1));
 
         txt_rol.setFont(new java.awt.Font("Segoe UI Black", 0, 14)); // NOI18N
         txt_rol.setEnabled(false);
         jPanel1.add(txt_rol, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 20, 116, -1));
 
         txtDia.setEnabled(false);
-        jPanel1.add(txtDia, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 290, 169, -1));
+        jPanel1.add(txtDia, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 280, 169, -1));
 
         txtHorario.setEnabled(false);
         jPanel1.add(txtHorario, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 250, 169, -1));
@@ -258,6 +258,26 @@ public class Registrarse extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_REGISTRARSEActionPerformed
 
+    public void consultar(String cedula) throws SQLException{
+       String consulta =("SELECT nombre, apellido FROM acceso_lab.tb_usuario where usuario='"+cedula+"';");
+        System.out.println("+++"+consulta);
+       conMysql c1= new conMysql();
+        try {
+            ResultSet res = c1.EjecutaSql(consulta);
+            if (res.next()) {
+                txt_nombre.setText(res.getString("nombre"));
+            }
+            
+        } catch (ClassNotFoundException ex) {
+            Logger.getLogger(Registrarse.class.getName()).log(Level.SEVERE, null, ex);
+        }
+       
+       
+        
+        
+    }
+    
+    
     /**
      * @param args the command line arguments
      */
