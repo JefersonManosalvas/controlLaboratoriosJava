@@ -104,15 +104,15 @@ public class login {
                 me.setVisible(true);
 
 
-               // JOptionPane.showMessageDialog(null, "Usuario estudiante");
-           String nombreUsuario = rs.getString("nombre");
-           String cargoUsuario = rs.getString("rol");
-               // Puedes asignar directamente el valor
-           // Realizar las acciones necesarias para el usuario estudiante
-             Registrarse ad = new Registrarse();
-            ad.setDatosUsuario(nombreUsuario, cargoUsuario);
-            ad.setVisible(true);
-            
+//               // JOptionPane.showMessageDialog(null, "Usuario estudiante");
+//           String nombreUsuario = rs.getString("nombre");
+//           String cargoUsuario = rs.getString("rol");
+//               // Puedes asignar directamente el valor
+//           // Realizar las acciones necesarias para el usuario estudiante
+////             Registrarse ad = new Registrarse();
+////            ad.setDatosUsuario(nombreUsuario, cargoUsuario);
+////            ad.setVisible(true);
+//            
               
                
                

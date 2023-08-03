@@ -4,12 +4,19 @@
  */
 package prvisual.controllaboratorios;
 
+import conecxion.conMysql;
 import conexion.conexion;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.time.DayOfWeek;
+import java.time.LocalDate;
+import java.time.format.TextStyle;
+import java.util.Locale;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 
 /**
@@ -18,21 +25,52 @@ import javax.swing.JOptionPane;
  */
 public class Registrarse extends javax.swing.JFrame {
 
-private String nombreUsuario;
+    private String nombreUsuario;
     private String rolUsuario;
     conexion cn = new conexion();
     Connection con = cn.conectar();
-    
-    
-    
-    public Registrarse() {
-       
+
+    public Registrarse() throws ClassNotFoundException {
+
         initComponents();
         //this.CargarComboCategorias();
-       setLocationRelativeTo(null);
-    
-    
-    
+        setLocationRelativeTo(null);
+        diaSemana();
+        try {
+            cargar();
+        } catch (SQLException ex) {
+            Logger.getLogger(Registrarse.class.getName()).log(Level.SEVERE, null, ex);
+        }
+
+    }
+
+    public String diaSemana() {
+        LocalDate fechaActual = LocalDate.now();
+
+        DayOfWeek diaSemana = fechaActual.getDayOfWeek();
+
+        String nombreDiaSemana = diaSemana.getDisplayName(TextStyle.FULL, Locale.getDefault());
+
+        System.out.println("Hoy es: " + nombreDiaSemana);
+
+        return nombreDiaSemana;
+    }
+
+    public void cargar() throws ClassNotFoundException, SQLException {
+        String sql = ("call acceso_lab.horarios('" + diaSemana() + "');");
+        System.out.println("---" + sql);
+
+        conMysql c1 = new conMysql();
+        ResultSet res = c1.EjecutaSql(sql);
+
+        while (res.next()) {
+            String materia = res.getString("materia");
+            cbxMateria.addItem(materia);
+            txtLaboratorio.setText(res.getString("nombre"));
+            txtHorario.setText(res.getString("hora_inicio"));
+            txtDia.setText(res.getString("dia_semana"));
+        }
+
     }
 
     /**
@@ -45,15 +83,7 @@ private String nombreUsuario;
     private void initComponents() {
 
         jLabel3 = new javax.swing.JLabel();
-        jComboBox3 = new javax.swing.JComboBox<>();
-        jLabel1 = new javax.swing.JLabel();
-        jLabel2 = new javax.swing.JLabel();
-        jLabel4 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
-        txt_rol = new javax.swing.JTextField();
-        txt_nombre1 = new javax.swing.JTextField();
-        jLabel6 = new javax.swing.JLabel();
-        txt_nombre3 = new javax.swing.JTextField();
         jPanel1 = new javax.swing.JPanel();
         jPanel2 = new javax.swing.JPanel();
         jPanel3 = new javax.swing.JPanel();
@@ -61,41 +91,24 @@ private String nombreUsuario;
         jPanel4 = new javax.swing.JPanel();
         jPanel5 = new javax.swing.JPanel();
         jPanel6 = new javax.swing.JPanel();
-        txt_nombre2 = new javax.swing.JTextField();
+        txtLaboratorio = new javax.swing.JTextField();
         txt_nombre = new javax.swing.JTextField();
+        txt_rol = new javax.swing.JTextField();
+        txtDia = new javax.swing.JTextField();
+        txtHorario = new javax.swing.JTextField();
+        jLabel6 = new javax.swing.JLabel();
+        jLabel4 = new javax.swing.JLabel();
+        jLabel1 = new javax.swing.JLabel();
+        jLabel2 = new javax.swing.JLabel();
+        cbxMateria = new javax.swing.JComboBox<>();
 
         jLabel3.setText("jLabel3");
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jComboBox3.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
-        getContentPane().add(jComboBox3, new org.netbeans.lib.awtextra.AbsoluteConstraints(188, 289, 160, 34));
-
-        jLabel1.setText("LABORATORIO");
-        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(47, 118, 93, -1));
-
-        jLabel2.setText("ASIGNATURA");
-        getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(47, 298, 81, -1));
-
-        jLabel4.setText("HORARIO");
-        getContentPane().add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(66, 164, 62, -1));
-
         jLabel5.setText("REGISTRO DE ASISTENCIA");
         getContentPane().add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(179, 13, 169, -1));
-
-        txt_rol.setFont(new java.awt.Font("Segoe UI Black", 0, 14)); // NOI18N
-        txt_rol.setEnabled(false);
-        getContentPane().add(txt_rol, new org.netbeans.lib.awtextra.AbsoluteConstraints(24, 66, 116, -1));
-
-        txt_nombre1.setEnabled(false);
-        getContentPane().add(txt_nombre1, new org.netbeans.lib.awtextra.AbsoluteConstraints(179, 161, 169, -1));
-
-        jLabel6.setText("DIA");
-        getContentPane().add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(66, 204, -1, -1));
-
-        txt_nombre3.setEnabled(false);
-        getContentPane().add(txt_nombre3, new org.netbeans.lib.awtextra.AbsoluteConstraints(179, 201, 169, -1));
 
         jPanel1.setBackground(new java.awt.Color(255, 255, 255));
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -188,12 +201,36 @@ private String nombreUsuario;
 
         jPanel1.add(jPanel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 440, -1, -1));
 
-        txt_nombre2.setEnabled(false);
-        jPanel1.add(txt_nombre2, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 110, 170, -1));
+        txtLaboratorio.setEnabled(false);
+        jPanel1.add(txtLaboratorio, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 220, 170, -1));
 
         txt_nombre.setFont(new java.awt.Font("Segoe UI Black", 0, 14)); // NOI18N
         txt_nombre.setEnabled(false);
-        jPanel1.add(txt_nombre, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 20, 120, -1));
+        jPanel1.add(txt_nombre, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 60, 210, -1));
+
+        txt_rol.setFont(new java.awt.Font("Segoe UI Black", 0, 14)); // NOI18N
+        txt_rol.setEnabled(false);
+        jPanel1.add(txt_rol, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 20, 116, -1));
+
+        txtDia.setEnabled(false);
+        jPanel1.add(txtDia, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 290, 169, -1));
+
+        txtHorario.setEnabled(false);
+        jPanel1.add(txtHorario, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 250, 169, -1));
+
+        jLabel6.setText("DIA");
+        jPanel1.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 290, -1, -1));
+
+        jLabel4.setText("HORARIO");
+        jPanel1.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 260, 62, -1));
+
+        jLabel1.setText("LABORATORIO");
+        jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 230, 93, -1));
+
+        jLabel2.setText("ASIGNATURA");
+        jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 180, 81, -1));
+
+        jPanel1.add(cbxMateria, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 170, 160, 34));
 
         getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 370, 450));
 
@@ -202,29 +239,23 @@ private String nombreUsuario;
 
     private void REGISTRARSEActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_REGISTRARSEActionPerformed
 
-try {
+        try {
 
-    String nombreUsuarios = txt_nombre.getText(); 
-    int idUsuario = obtenerIdUsuario(nombreUsuarios);
+            String nombreUsuarios = txt_nombre.getText();
+            int idUsuario = obtenerIdUsuario(nombreUsuarios);
 
+            PreparedStatement ps = con.prepareStatement("INSERT INTO `tb_ingreso_laboratorio` (nombre, laboratorio, idUsuario, rol) VALUES (?, ?, ?, ?)");
 
-    
-    
-    
-    PreparedStatement ps = con.prepareStatement("INSERT INTO `tb_ingreso_laboratorio` (nombre, laboratorio, idUsuario, rol) VALUES (?, ?, ?, ?)");
+            ps.setString(1, txt_nombre.getText());
+            //ps.setString(2, comboBoxLaboratorio.getSelectedItem().toString());
+            ps.setInt(3, idUsuario);
+            ps.setString(4, txt_rol.getText());
 
-  
-    ps.setString(1, txt_nombre.getText());
-    //ps.setString(2, comboBoxLaboratorio.getSelectedItem().toString());
-    ps.setInt(3, idUsuario); 
-    ps.setString(4, txt_rol.getText());
-
-
-    ps.executeUpdate();
-    JOptionPane.showMessageDialog(null, "Datos registrados");
-} catch (SQLException e) {
-    System.out.println("Error: " + e);
-}
+            ps.executeUpdate();
+            JOptionPane.showMessageDialog(null, "Datos registrados");
+        } catch (SQLException e) {
+            System.out.println("Error: " + e);
+        }
     }//GEN-LAST:event_REGISTRARSEActionPerformed
 
     /**
@@ -257,14 +288,18 @@ try {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new Registrarse().setVisible(true);
+                try {
+                    new Registrarse().setVisible(true);
+                } catch (ClassNotFoundException ex) {
+                    Logger.getLogger(Registrarse.class.getName()).log(Level.SEVERE, null, ex);
+                }
             }
         });
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton REGISTRARSE;
-    private javax.swing.JComboBox<String> jComboBox3;
+    private javax.swing.JComboBox<String> cbxMateria;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
@@ -277,14 +312,12 @@ try {
     private javax.swing.JPanel jPanel4;
     private javax.swing.JPanel jPanel5;
     private javax.swing.JPanel jPanel6;
+    private javax.swing.JTextField txtDia;
+    private javax.swing.JTextField txtHorario;
+    private javax.swing.JTextField txtLaboratorio;
     private javax.swing.JTextField txt_nombre;
-    private javax.swing.JTextField txt_nombre1;
-    private javax.swing.JTextField txt_nombre2;
-    private javax.swing.JTextField txt_nombre3;
     private javax.swing.JTextField txt_rol;
     // End of variables declaration//GEN-END:variables
-
-
 
 //private void CargarComboCategorias() {
 //        Connection cn = conexion.conectar();
@@ -307,13 +340,12 @@ try {
 //        }
 //  
 //}
-
-  public void setDatosUsuario(String nombre, String cargo) {
+    public void setDatosUsuario(String nombre, String cargo) {
         txt_nombre.setText(nombre);
         txt_rol.setText(cargo);
     }
-  
-  private int obtenerIdUsuario(String nombre) {
+
+    private int obtenerIdUsuario(String nombre) {
         String sql = "select * from tb_usuario where nombre = '" + nombre + "'";
         Statement st;
         try {
@@ -329,6 +361,5 @@ try {
         }
         return 0;
     }
-
 
 }

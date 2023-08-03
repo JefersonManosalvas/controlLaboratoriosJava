@@ -4,6 +4,14 @@
  */
 package vista;
 
+import java.time.DayOfWeek;
+import java.time.LocalDate;
+import java.time.format.TextStyle;
+import java.util.Locale;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import prvisual.controllaboratorios.Registrarse;
+
 /**
  *
  * @author Jefferson
@@ -16,6 +24,7 @@ public class MenuLaboratorios extends javax.swing.JFrame {
     public MenuLaboratorios() {
         initComponents();
         setLocationRelativeTo(null);
+
     }
 
     /**
@@ -32,7 +41,6 @@ public class MenuLaboratorios extends javax.swing.JFrame {
         software = new javax.swing.JButton();
         jPanel2 = new javax.swing.JPanel();
         jPanel3 = new javax.swing.JPanel();
-        jLabel1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -40,9 +48,19 @@ public class MenuLaboratorios extends javax.swing.JFrame {
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jButton1.setIcon(new javax.swing.ImageIcon("C:\\Users\\Jefferson\\Pictures\\Saved Pictures\\descarga.png")); // NOI18N
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
         jPanel1.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 60, 160, 210));
 
         software.setIcon(new javax.swing.ImageIcon("C:\\Users\\Jefferson\\Pictures\\Saved Pictures\\DESARROLO DE SOFTWARE.png")); // NOI18N
+        software.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                softwareActionPerformed(evt);
+            }
+        });
         jPanel1.add(software, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 60, 160, 210));
 
         jPanel2.setBackground(new java.awt.Color(0, 153, 255));
@@ -52,9 +70,6 @@ public class MenuLaboratorios extends javax.swing.JFrame {
         jPanel3.setBackground(new java.awt.Color(0, 153, 255));
         jPanel3.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
         jPanel1.add(jPanel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 310, 470, 40));
-
-        jLabel1.setText("jLabel1");
-        jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 280, -1, -1));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -69,6 +84,30 @@ public class MenuLaboratorios extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        Registrarse reg;
+        try {
+            reg = new Registrarse();
+            reg.setVisible(true);
+            dispose();
+        } catch (ClassNotFoundException ex) {
+            Logger.getLogger(MenuLaboratorios.class.getName()).log(Level.SEVERE, null, ex);
+        }
+
+
+    }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void softwareActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_softwareActionPerformed
+        try {
+            Registrarse reg = new Registrarse();
+            reg.setVisible(true);
+            dispose();
+        } catch (ClassNotFoundException ex) {
+            Logger.getLogger(MenuLaboratorios.class.getName()).log(Level.SEVERE, null, ex);
+        }
+
+    }//GEN-LAST:event_softwareActionPerformed
 
     /**
      * @param args the command line arguments
@@ -107,7 +146,6 @@ public class MenuLaboratorios extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButton1;
-    private javax.swing.JLabel jLabel1;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
