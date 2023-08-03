@@ -21,6 +21,15 @@ public class horario {
     private String dia_semana;
       private String laboratorio;
        private String cbxlab;
+              private String docente;
+
+    public String getDocente() {
+        return docente;
+    }
+
+    public void setDocente(String docente) {
+        this.docente = docente;
+    }
 
     public String getCbxlab() {
         return cbxlab;
@@ -74,7 +83,7 @@ public class horario {
     
     
     public  void registrar_horario(){
-        String insertar=("call acceso_lab.registro_horarioa('"+getMateria()+"', '"+getHora_inicio()+"', '"+getHora_fin()+"', '"+getDia_semana()+"','"+getLaboratorio()+"');"); 
+        String insertar=("call acceso_lab.registro_horarios('"+getMateria()+"', '"+getHora_inicio()+"', '"+getHora_fin()+"', '"+getDia_semana()+"','"+getLaboratorio()+"','"+getDocente()+"');"); 
         
         System.out.println("--"+insertar);
         

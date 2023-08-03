@@ -5,15 +5,11 @@
 package atributosYmetodos;
 
 import conecxion.conMysql;
-import java.io.BufferedWriter;
-import java.io.FileWriter;
-import java.io.IOException;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.time.LocalDateTime;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import javax.swing.JOptionPane;
+import prvisual.controllaboratorios.Registrarse;
+import vista.MenuEstudiante;
 import vista.admFuncional;
 
 /**
@@ -24,6 +20,8 @@ public class login {
 
     private String usuario;
     private String contrasenia;
+     private String rol;
+      //private String contrasenia;
 
     public String getUsuario() {
         return usuario;
@@ -46,7 +44,7 @@ public class login {
         boolean respuesta = false;
 //        String user = txtuser.getText();
 //        String pass = String.valueOf(txtpssw.getPassword());
-        String con = "call acceso_lab.verificarLogin('" + getUsuario() + "','" + getContrasenia() + "');";
+        String con = "call acceso_lab.verificarLogin1('" + getUsuario() + "','" + getContrasenia() + "');";
         System.out.println("///" + con);
 
         ResultSet rs = c1.EjecutaSql(con);
@@ -58,14 +56,13 @@ public class login {
         } else if (rs.next()) {
             int existe = rs.getInt("result");
             if (existe == 1) {
-               // JOptionPane.showMessageDialog(null, "Usuario administrador funcional");
+                // JOptionPane.showMessageDialog(null, "Usuario administrador funcional");
 //                Menu1 m1 = new Menu1();
 //                m1.setVisible(true);
 //                this.dispose();
 
                 admFuncional h1 = new admFuncional();
                 h1.setVisible(true);
-               
 
 //                String registro = "usuario=" + user + ", contraseña=" + pass + ", intento = Correcto";
 //                guardarRegistro(registro);
@@ -81,7 +78,17 @@ public class login {
                 JOptionPane.showMessageDialog(null, "Usuario docente");
 
             } else if (existe == 4) {
-                JOptionPane.showMessageDialog(null, "Usuario estudiante");
+                // JOptionPane.showMessageDialog(null, "Usuario estudiante");
+              
+//                String nombreUsuarios = rs.getString("nombre");
+//               String cargoUsuario = rs.getString("rol");
+//
+//                Registrarse lab = new Registrarse();
+//                lab.setDatosUsuario(nombreUsuarios, cargoUsuario);
+//                lab.setVisible(true);
+
+                MenuEstudiante me= new MenuEstudiante();
+                me.setVisible(true);
 
             } else {
                 JOptionPane.showMessageDialog(null, "Usuario incorrecto");

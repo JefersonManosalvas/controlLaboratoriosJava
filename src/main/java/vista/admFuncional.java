@@ -64,7 +64,7 @@ public final class admFuncional extends javax.swing.JFrame {
         jPanel2 = new javax.swing.JPanel();
         jPanel3 = new javax.swing.JPanel();
         jLabel6 = new javax.swing.JLabel();
-        jTextField1 = new javax.swing.JTextField();
+        txtDocente = new javax.swing.JTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -169,7 +169,7 @@ public final class admFuncional extends javax.swing.JFrame {
         jLabel6.setFont(new java.awt.Font("Century Schoolbook", 3, 14)); // NOI18N
         jLabel6.setText("DOCENTE: ");
         jPanel1.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(550, 90, -1, -1));
-        jPanel1.add(jTextField1, new org.netbeans.lib.awtextra.AbsoluteConstraints(660, 90, 120, -1));
+        jPanel1.add(txtDocente, new org.netbeans.lib.awtextra.AbsoluteConstraints(660, 90, 120, -1));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -194,6 +194,7 @@ public final class admFuncional extends javax.swing.JFrame {
         hr.setHora_inicio(txtHoraini.getText());
         hr.setHora_fin(txtHorafin.getText());
         hr.setLaboratorio(idSeleccionado);
+        hr.setDocente(txtDocente.getText());
         hr.registrar_horario();
         try {
             MOSTRAR_HORARIOS();
@@ -208,6 +209,7 @@ public final class admFuncional extends javax.swing.JFrame {
         txtHoraini.setText(tblaconH.getValueAt(tblaconH.getSelectedRow(), 1).toString());
         txtHorafin.setText(tblaconH.getValueAt(tblaconH.getSelectedRow(), 2).toString());
         txtDia.setText(tblaconH.getValueAt(tblaconH.getSelectedRow(), 3).toString());
+        txtDocente.setText(tblaconH.getValueAt(tblaconH.getSelectedRow(), 6).toString());
  
     }//GEN-LAST:event_tblaconHMouseClicked
 
@@ -233,7 +235,7 @@ public final class admFuncional extends javax.swing.JFrame {
     }
     public void MOSTRAR_HORARIOS() throws ClassNotFoundException {
 
-        String sql = ("SELECT  materia,hora_inicio,hora_fin,dia_semana,nombre FROM tb_horarios,laboratorios where tb_horarios.idLaboratorio=laboratorios.idLaboratorio;");
+        String sql = ("SELECT  materia,hora_inicio,hora_fin,dia_semana,nombre,docente FROM tb_horarios,laboratorios where tb_horarios.idLaboratorio=laboratorios.idLaboratorio;");
         System.out.println("648" + sql);
         DefaultTableModel modelo = new DefaultTableModel();
         modelo.addColumn("MATERIA");
@@ -241,8 +243,9 @@ public final class admFuncional extends javax.swing.JFrame {
         modelo.addColumn("HORA DE SALIDA");
         modelo.addColumn("DIA");
         modelo.addColumn("LABORATORIO");
+        modelo.addColumn("DOCENTE");
         tblaconH.setModel(modelo);
-        String[] datos = new String[5];
+        String[] datos = new String[6];
         try {
             conMysql c1 = new conMysql();
             try (ResultSet res = c1.EjecutaSql(sql)) {
@@ -252,6 +255,7 @@ public final class admFuncional extends javax.swing.JFrame {
                     datos[2] = res.getString(3);
                     datos[3] = res.getString(4);
                     datos[4] = res.getString(5);
+                     datos[5] = res.getString(6);
                     modelo.addRow(datos);
 
                 }
@@ -319,9 +323,9 @@ public final class admFuncional extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTextField jTextField1;
     private javax.swing.JTable tblaconH;
     private javax.swing.JTextField txtDia;
+    private javax.swing.JTextField txtDocente;
     private javax.swing.JTextField txtHorafin;
     private javax.swing.JTextField txtHoraini;
     private javax.swing.JTextField txtMateria;

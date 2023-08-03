@@ -27,7 +27,7 @@ public class conMysql {
             Connection con = DriverManager.getConnection(url, usuario, clave);
             PreparedStatement pst = con.prepareStatement(sql);
             resultado = pst.executeQuery();
-            con.close();
+           // con.close();
             return resultado;
         } catch (SQLException e) {
             return resultado;
@@ -42,7 +42,7 @@ public class conMysql {
             Class.forName("com.mysql.cj.jdbc.Driver");
             Connection con = DriverManager.getConnection(url, usuario, clave);
             PreparedStatement pst = con.prepareStatement(sql);
-            con.close();
+           // con.close();
             pst.execute();
            } catch (SQLException e) {
             

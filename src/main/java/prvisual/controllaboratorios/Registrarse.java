@@ -154,8 +154,8 @@ private String nombreUsuario;
 
 try {
 
-    String nombreUsuario = txt_nombre.getText(); 
-    int idUsuario = obtenerIdUsuario(nombreUsuario);
+    String nombreUsuarios = txt_nombre.getText(); 
+    int idUsuario = obtenerIdUsuario(nombreUsuarios);
 
 
     

@@ -85,7 +85,7 @@ public class Usuario extends javax.swing.JFrame {
         String user = txt_usuario.getText();
         String pass = String.valueOf(psw_contraseña.getText());
 
-        String query = "SELECT nombre, rol FROM tb_usuario WHERE usuario = ? AND password = ?";
+        String query = "SELECT * FROM tb_usuario WHERE usuario=? AND password=? AND rol = 'estudiante'";
         PreparedStatement ps = cn.conectar().prepareStatement(query);
         ps.setString(1, user);
         ps.setString(2, pass);
@@ -94,8 +94,8 @@ public class Usuario extends javax.swing.JFrame {
 
         if (rs.next()) {
             // Usuario correcto, obtener datos del usuario
-            String nombreUsuario = rs.getString("nombre");
-            String cargoUsuario = rs.getString("rol");
+           String nombreUsuario = rs.getString("nombre");
+           String cargoUsuario = rs.getString("rol");
 
             JOptionPane.showMessageDialog(null, "Usuario correcto");
 
