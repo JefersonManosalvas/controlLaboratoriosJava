@@ -69,6 +69,7 @@ public final class admFuncional extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         jPanel1.setBackground(new java.awt.Color(255, 255, 255));
+        jPanel1.setForeground(new java.awt.Color(255, 255, 255));
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jLabel1.setFont(new java.awt.Font("Century Schoolbook", 3, 14)); // NOI18N
@@ -108,6 +109,7 @@ public final class admFuncional extends javax.swing.JFrame {
                 "Title 1", "Title 2", "Title 3", "Title 4"
             }
         ));
+        tblaconH.setGridColor(new java.awt.Color(255, 255, 255));
         tblaconH.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 tblaconHMouseClicked(evt);
@@ -117,15 +119,18 @@ public final class admFuncional extends javax.swing.JFrame {
 
         jPanel1.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 190, 820, 150));
 
-        jButton1.setBackground(new java.awt.Color(0, 255, 204));
+        jButton1.setBackground(new java.awt.Color(51, 153, 255));
+        jButton1.setForeground(new java.awt.Color(255, 255, 255));
         jButton1.setText("BUSCAR");
         jPanel1.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 130, -1, -1));
 
-        jButton2.setBackground(new java.awt.Color(0, 255, 204));
+        jButton2.setBackground(new java.awt.Color(51, 153, 255));
+        jButton2.setForeground(new java.awt.Color(255, 255, 255));
         jButton2.setText("ELIMINAR");
         jPanel1.add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(510, 130, -1, -1));
 
-        jButton3.setBackground(new java.awt.Color(0, 255, 204));
+        jButton3.setBackground(new java.awt.Color(51, 153, 255));
+        jButton3.setForeground(new java.awt.Color(255, 255, 255));
         jButton3.setText("AGREGAR");
         jButton3.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -201,6 +206,7 @@ public final class admFuncional extends javax.swing.JFrame {
         } catch (ClassNotFoundException ex) {
             Logger.getLogger(admFuncional.class.getName()).log(Level.SEVERE, null, ex);
         }
+        limpiar_horario();
 
     }//GEN-LAST:event_agregar
 
@@ -209,7 +215,7 @@ public final class admFuncional extends javax.swing.JFrame {
         txtHoraini.setText(tblaconH.getValueAt(tblaconH.getSelectedRow(), 1).toString());
         txtHorafin.setText(tblaconH.getValueAt(tblaconH.getSelectedRow(), 2).toString());
         txtDia.setText(tblaconH.getValueAt(tblaconH.getSelectedRow(), 3).toString());
-        txtDocente.setText(tblaconH.getValueAt(tblaconH.getSelectedRow(), 6).toString());
+        txtDocente.setText(tblaconH.getValueAt(tblaconH.getSelectedRow(), 5).toString());
  
     }//GEN-LAST:event_tblaconHMouseClicked
 
@@ -265,6 +271,14 @@ public final class admFuncional extends javax.swing.JFrame {
         } catch (SQLException e) {
             JOptionPane.showInternalMessageDialog(null, "error" + e.toString());
         }
+    }
+    
+    public void limpiar_horario(){
+        txtDia.setText("");
+        txtDocente.setText("");
+        txtHorafin.setText("");
+        txtHoraini.setText("");
+        txtMateria.setText("");
     }
     
 

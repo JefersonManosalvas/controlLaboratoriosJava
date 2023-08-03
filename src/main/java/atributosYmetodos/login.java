@@ -9,8 +9,9 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import javax.swing.JOptionPane;
 import prvisual.controllaboratorios.Registrarse;
-import vista.MenuEstudiante;
+import vista.MenuLaboratorios;
 import vista.admFuncional;
+import vista.logeo;
 
 /**
  *
@@ -20,8 +21,8 @@ public class login {
 
     private String usuario;
     private String contrasenia;
-     private String rol;
-      //private String contrasenia;
+    private String rol;
+    //private String contrasenia;
 
     public String getUsuario() {
         return usuario;
@@ -79,16 +80,17 @@ public class login {
 
             } else if (existe == 4) {
                 // JOptionPane.showMessageDialog(null, "Usuario estudiante");
-              
+
 //                String nombreUsuarios = rs.getString("nombre");
 //               String cargoUsuario = rs.getString("rol");
 //
 //                Registrarse lab = new Registrarse();
 //                lab.setDatosUsuario(nombreUsuarios, cargoUsuario);
 //                lab.setVisible(true);
-
-                MenuEstudiante me= new MenuEstudiante();
-                me.setVisible(true);
+//                adminTecnico me= new adminTecnico();
+//                me.setVisible(true);
+                MenuLaboratorios me = new MenuLaboratorios();
+                me.show();
 
             } else {
                 JOptionPane.showMessageDialog(null, "Usuario incorrecto");

@@ -47,9 +47,10 @@ public class logeo extends javax.swing.JFrame {
         txtusuario = new javax.swing.JTextField();
         txtcontrasenia = new javax.swing.JPasswordField();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
         jPanel1.setBackground(new java.awt.Color(255, 255, 255));
+        jPanel1.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jPanel8.setBackground(new java.awt.Color(51, 102, 255));
@@ -170,6 +171,8 @@ public class logeo extends javax.swing.JFrame {
         } catch (ClassNotFoundException | SQLException ex) {
             Logger.getLogger(logeo.class.getName()).log(Level.SEVERE, null, ex);
         }
+        dispose();
+        
         
         
         
