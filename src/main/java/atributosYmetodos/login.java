@@ -14,7 +14,6 @@ import vista.admFuncional;
 import prvisual.controllaboratorios.Nuevo_usuario;
 import prvisual.controllaboratorios.Registrarse;
 
-
 /**
  *
  * @author Jefferson
@@ -23,12 +22,37 @@ public class login {
 
     private String usuario;
     private String contrasenia;
-
     private String rol;
-    //private String contrasenia;
+    private String nombreUsuario;
+    private String cargoUsuario;
+//    
+//    public login(){
+//        
+//    }
 
+    public String getRol() {
+        return rol;
+    }
 
+    public void setRol(String rol) {
+        this.rol = rol;
+    }
 
+    public String getNombreUsuario() {
+        return nombreUsuario;
+    }
+
+    public void setNombreUsuario(String nombreUsuario) {
+        this.nombreUsuario = nombreUsuario;
+    }
+
+    public String getCargoUsuario() {
+        return cargoUsuario;
+    }
+
+    public void setCargoUsuario(String cargoUsuario) {
+        this.cargoUsuario = cargoUsuario;
+    }
 
     public String getUsuario() {
         return usuario;
@@ -57,8 +81,7 @@ public class login {
         ResultSet rs = c1.EjecutaSql(con);
 
         if (getUsuario().isEmpty()) {
-            
-            
+
             JOptionPane.showMessageDialog(null, "INGRESE EL USUARIO");
         } else if (getContrasenia().isEmpty()) {
             JOptionPane.showMessageDialog(null, "INGRESE LA CONTRASEÑA");
@@ -75,15 +98,11 @@ public class login {
 
 //                String registro = "usuario=" + user + ", contraseña=" + pass + ", intento = Correcto";
 //                guardarRegistro(registro);
-                } else if (existe == 2) {
+            } else if (existe == 2) {
 
-
-
-                 Nuevo_usuario adj = new Nuevo_usuario();
+                Nuevo_usuario adj = new Nuevo_usuario();
                 adj.setVisible(true);
-              
-         
-            
+
 //}
             } else if (existe == 3) {
                 JOptionPane.showMessageDialog(null, "Usuario docente");
@@ -91,7 +110,6 @@ public class login {
             } else if (existe == 4) {
 
                 // JOptionPane.showMessageDialog(null, "Usuario estudiante");
-
 //                String nombreUsuarios = rs.getString("nombre");
 //               String cargoUsuario = rs.getString("rol");
 //
@@ -101,23 +119,18 @@ public class login {
 //                adminTecnico me= new adminTecnico();
 //                me.setVisible(true);
                 MenuLaboratorios me = new MenuLaboratorios();
+                // JOptionPane.showMessageDialog(null, "Usuario estudiante");
+//                rs.getString("nombre");
+//                rs.getString("rol");
+                me.setcedula(usuario);
                 me.setVisible(true);
 
-
-//               // JOptionPane.showMessageDialog(null, "Usuario estudiante");
-//           String nombreUsuario = rs.getString("nombre");
-//           String cargoUsuario = rs.getString("rol");
 //               // Puedes asignar directamente el valor
 //           // Realizar las acciones necesarias para el usuario estudiante
 ////             Registrarse ad = new Registrarse();
 ////            ad.setDatosUsuario(nombreUsuario, cargoUsuario);
 ////            ad.setVisible(true);
 //            
-              
-               
-               
-               
-
             } else {
                 JOptionPane.showMessageDialog(null, "Usuario incorrecto");
 //                String registro = "usuario=" + user + ", contraseña=" + pass + ", intento=Incorrecto";

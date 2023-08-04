@@ -4,6 +4,8 @@
  */
 package vista;
 
+import atributosYmetodos.login;
+import java.sql.SQLException;
 import java.time.DayOfWeek;
 import java.time.LocalDate;
 import java.time.format.TextStyle;
@@ -18,12 +20,19 @@ import prvisual.controllaboratorios.Registrarse;
  */
 public class MenuLaboratorios extends javax.swing.JFrame {
 
+    private String Cedula_est;
+
     /**
      * Creates new form MenuLaboratorios
      */
     public MenuLaboratorios() {
         initComponents();
         setLocationRelativeTo(null);
+
+    }
+
+    public void setcedula(String cedula) {
+        Cedula_est = cedula;
 
     }
 
@@ -37,8 +46,8 @@ public class MenuLaboratorios extends javax.swing.JFrame {
     private void initComponents() {
 
         jPanel1 = new javax.swing.JPanel();
-        jButton1 = new javax.swing.JButton();
-        software = new javax.swing.JButton();
+        btnCisco = new javax.swing.JButton();
+        btnSoftware = new javax.swing.JButton();
         jPanel2 = new javax.swing.JPanel();
         jPanel3 = new javax.swing.JPanel();
 
@@ -47,21 +56,23 @@ public class MenuLaboratorios extends javax.swing.JFrame {
         jPanel1.setBackground(new java.awt.Color(255, 255, 255));
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jButton1.setIcon(new javax.swing.ImageIcon("C:\\Users\\Jefferson\\Pictures\\Saved Pictures\\descarga.png")); // NOI18N
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+        btnCisco.setIcon(new javax.swing.ImageIcon("C:\\Users\\Jefferson\\Pictures\\Saved Pictures\\descarga.png")); // NOI18N
+        btnCisco.setText("cisco");
+        btnCisco.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                btnCiscoActionPerformed(evt);
             }
         });
-        jPanel1.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 60, 160, 210));
+        jPanel1.add(btnCisco, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 60, 160, 210));
 
-        software.setIcon(new javax.swing.ImageIcon("C:\\Users\\Jefferson\\Pictures\\Saved Pictures\\DESARROLO DE SOFTWARE.png")); // NOI18N
-        software.addActionListener(new java.awt.event.ActionListener() {
+        btnSoftware.setIcon(new javax.swing.ImageIcon("C:\\Users\\Jefferson\\Pictures\\Saved Pictures\\DESARROLO DE SOFTWARE.png")); // NOI18N
+        btnSoftware.setText("desarrollo de software");
+        btnSoftware.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                softwareActionPerformed(evt);
+                btnSoftwareActionPerformed(evt);
             }
         });
-        jPanel1.add(software, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 60, 160, 210));
+        jPanel1.add(btnSoftware, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 60, 160, 210));
 
         jPanel2.setBackground(new java.awt.Color(0, 153, 255));
         jPanel2.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -85,29 +96,37 @@ public class MenuLaboratorios extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+    private void btnCiscoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCiscoActionPerformed
         Registrarse reg;
         try {
             reg = new Registrarse();
+            reg.consultar(Cedula_est);
+            reg.cargar(btnCisco.getText());
+            reg.setCedula(Cedula_est);
+
             reg.setVisible(true);
             dispose();
-        } catch (ClassNotFoundException ex) {
+        } catch (ClassNotFoundException | SQLException ex) {
             Logger.getLogger(MenuLaboratorios.class.getName()).log(Level.SEVERE, null, ex);
         }
 
 
-    }//GEN-LAST:event_jButton1ActionPerformed
+    }//GEN-LAST:event_btnCiscoActionPerformed
 
-    private void softwareActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_softwareActionPerformed
+    private void btnSoftwareActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSoftwareActionPerformed
         try {
             Registrarse reg = new Registrarse();
+            reg.consultar(Cedula_est);
+            reg.cargar(btnSoftware.getText());
+            reg.setCedula(Cedula_est);
             reg.setVisible(true);
+
             dispose();
-        } catch (ClassNotFoundException ex) {
+        } catch (ClassNotFoundException | SQLException ex) {
             Logger.getLogger(MenuLaboratorios.class.getName()).log(Level.SEVERE, null, ex);
         }
 
-    }//GEN-LAST:event_softwareActionPerformed
+    }//GEN-LAST:event_btnSoftwareActionPerformed
 
     /**
      * @param args the command line arguments
@@ -145,10 +164,10 @@ public class MenuLaboratorios extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton1;
+    private javax.swing.JButton btnCisco;
+    private javax.swing.JButton btnSoftware;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
-    private javax.swing.JButton software;
     // End of variables declaration//GEN-END:variables
 }

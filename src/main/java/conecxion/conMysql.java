@@ -16,7 +16,7 @@ import java.sql.SQLException;
  */
 public class conMysql {
 
-    private String url = "jdbc:mysql://localhost:3306/acceso_lab?zeroDateTimeBehavior=CONVERT_TO_NULL";
+    private String url = "jdbc:mysql://localhost:3306/accesolab?zeroDateTimeBehavior=CONVERT_TO_NULL";
     private String usuario = "root";
     private String clave = "root";
 

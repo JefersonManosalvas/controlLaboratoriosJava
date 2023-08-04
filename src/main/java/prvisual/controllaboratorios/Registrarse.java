@@ -14,7 +14,9 @@ import java.sql.Statement;
 import java.time.DayOfWeek;
 import java.time.LocalDate;
 import java.time.format.TextStyle;
+import java.util.HashMap;
 import java.util.Locale;
+import java.util.Map;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JOptionPane;
@@ -25,10 +27,20 @@ import javax.swing.JOptionPane;
  */
 public class Registrarse extends javax.swing.JFrame {
 
-    private String nombreUsuario;
+    private String cedula;
+
+    public String getCedula() {
+        return cedula;
+    }
+
+    public void setCedula(String cedula) {
+        this.cedula = cedula;
+    }
     private String rolUsuario;
     conexion cn = new conexion();
     Connection con = cn.conectar();
+
+    Map<String, String> labMap = new HashMap<>();
 
     public Registrarse() throws ClassNotFoundException {
 
@@ -36,11 +48,7 @@ public class Registrarse extends javax.swing.JFrame {
         //this.CargarComboCategorias();
         setLocationRelativeTo(null);
         diaSemana();
-        try {
-            cargar();
-        } catch (SQLException ex) {
-            Logger.getLogger(Registrarse.class.getName()).log(Level.SEVERE, null, ex);
-        }
+        //cargar();
 
     }
 
@@ -56,19 +64,21 @@ public class Registrarse extends javax.swing.JFrame {
         return nombreDiaSemana;
     }
 
-    public void cargar() throws ClassNotFoundException, SQLException {
-        String sql = ("call acceso_lab.horarios('" + diaSemana() + "');");
+    public void cargar(String lab) throws ClassNotFoundException, SQLException {
+        String sql = ("call acceso_lab.horarios('" + diaSemana() + "', '" + lab + "');");
         System.out.println("---" + sql);
 
         conMysql c1 = new conMysql();
         ResultSet res = c1.EjecutaSql(sql);
 
         while (res.next()) {
+            String id = res.getString("idHorario");
             String materia = res.getString("materia");
             cbxMateria.addItem(materia);
             txtLaboratorio.setText(res.getString("nombre"));
             txtHorario.setText(res.getString("hora_inicio"));
             txtDia.setText(res.getString("dia_semana"));
+            labMap.put(materia, id);
         }
 
     }
@@ -83,7 +93,6 @@ public class Registrarse extends javax.swing.JFrame {
     private void initComponents() {
 
         jLabel3 = new javax.swing.JLabel();
-        jLabel5 = new javax.swing.JLabel();
         jPanel1 = new javax.swing.JPanel();
         jPanel2 = new javax.swing.JPanel();
         jPanel3 = new javax.swing.JPanel();
@@ -93,7 +102,6 @@ public class Registrarse extends javax.swing.JFrame {
         jPanel6 = new javax.swing.JPanel();
         txtLaboratorio = new javax.swing.JTextField();
         txt_nombre = new javax.swing.JTextField();
-        txt_rol = new javax.swing.JTextField();
         txtDia = new javax.swing.JTextField();
         txtHorario = new javax.swing.JTextField();
         jLabel6 = new javax.swing.JLabel();
@@ -101,14 +109,12 @@ public class Registrarse extends javax.swing.JFrame {
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         cbxMateria = new javax.swing.JComboBox<>();
+        jLabel5 = new javax.swing.JLabel();
 
         jLabel3.setText("jLabel3");
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-
-        jLabel5.setText("REGISTRO DE ASISTENCIA");
-        getContentPane().add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(179, 13, 169, -1));
 
         jPanel1.setBackground(new java.awt.Color(255, 255, 255));
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -206,14 +212,10 @@ public class Registrarse extends javax.swing.JFrame {
 
         txt_nombre.setFont(new java.awt.Font("Segoe UI Black", 0, 14)); // NOI18N
         txt_nombre.setEnabled(false);
-        jPanel1.add(txt_nombre, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 60, 210, -1));
-
-        txt_rol.setFont(new java.awt.Font("Segoe UI Black", 0, 14)); // NOI18N
-        txt_rol.setEnabled(false);
-        jPanel1.add(txt_rol, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 20, 116, -1));
+        jPanel1.add(txt_nombre, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 110, 210, -1));
 
         txtDia.setEnabled(false);
-        jPanel1.add(txtDia, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 290, 169, -1));
+        jPanel1.add(txtDia, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 280, 169, -1));
 
         txtHorario.setEnabled(false);
         jPanel1.add(txtHorario, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 250, 169, -1));
@@ -232,6 +234,10 @@ public class Registrarse extends javax.swing.JFrame {
 
         jPanel1.add(cbxMateria, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 170, 160, 34));
 
+        jLabel5.setFont(new java.awt.Font("Century Schoolbook", 3, 18)); // NOI18N
+        jLabel5.setText("REGISTRO DE ASISTENCIA");
+        jPanel1.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 50, 280, -1));
+
         getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 370, 450));
 
         pack();
@@ -241,22 +247,42 @@ public class Registrarse extends javax.swing.JFrame {
 
         try {
 
-            String nombreUsuarios = txt_nombre.getText();
-            int idUsuario = obtenerIdUsuario(nombreUsuarios);
+            String nombreSeleccionado = cbxMateria.getSelectedItem().toString();
+            String idSeleccionado = labMap.get(nombreSeleccionado);
+                String lab = txtLaboratorio.getText();
+                String combo= cbxMateria.getSelectedItem().toString();
+            if (lab.isEmpty()||combo.isEmpty()) {
+                JOptionPane.showMessageDialog(null, "tiene campos vacios");
+            } else {
 
-            PreparedStatement ps = con.prepareStatement("INSERT INTO `tb_ingreso_laboratorio` (nombre, laboratorio, idUsuario, rol) VALUES (?, ?, ?, ?)");
-
-            ps.setString(1, txt_nombre.getText());
-            //ps.setString(2, comboBoxLaboratorio.getSelectedItem().toString());
-            ps.setInt(3, idUsuario);
-            ps.setString(4, txt_rol.getText());
-
-            ps.executeUpdate();
-            JOptionPane.showMessageDialog(null, "Datos registrados");
-        } catch (SQLException e) {
-            System.out.println("Error: " + e);
+                String insertar = ("INSERT INTO `acceso_lab`.`tb_ingreso_laboratorio` (`Usuario`, `idHorario`) VALUES ('" + cedula + "','" + idSeleccionado + "')");
+                System.out.println("888 " + insertar);
+                // JOptionPane.showMessageDialog(null, "Datos registrados");
+                conMysql c1 = new conMysql();
+                c1.EjecutaSqlIUD(insertar);
+            }
+        } catch (ClassNotFoundException ex) {
+            Logger.getLogger(Registrarse.class.getName()).log(Level.SEVERE, null, ex);
         }
+
+
     }//GEN-LAST:event_REGISTRARSEActionPerformed
+
+    public void consultar(String cedula) throws SQLException {
+        String consulta = ("SELECT CONCAT(nombre, ' ', apellido) AS nombre_completo FROM acceso_lab.tb_usuario WHERE usuario = '" + cedula + "';");
+        System.out.println("+++" + consulta);
+        conMysql c1 = new conMysql();
+        try {
+            ResultSet res = c1.EjecutaSql(consulta);
+            if (res.next()) {
+                txt_nombre.setText(res.getString("nombre_completo"));
+            }
+
+        } catch (ClassNotFoundException ex) {
+            Logger.getLogger(Registrarse.class.getName()).log(Level.SEVERE, null, ex);
+        }
+
+    }
 
     /**
      * @param args the command line arguments
@@ -316,7 +342,6 @@ public class Registrarse extends javax.swing.JFrame {
     private javax.swing.JTextField txtHorario;
     private javax.swing.JTextField txtLaboratorio;
     private javax.swing.JTextField txt_nombre;
-    private javax.swing.JTextField txt_rol;
     // End of variables declaration//GEN-END:variables
 
 //private void CargarComboCategorias() {
@@ -340,11 +365,10 @@ public class Registrarse extends javax.swing.JFrame {
 //        }
 //  
 //}
-    public void setDatosUsuario(String nombre, String cargo) {
-        txt_nombre.setText(nombre);
-        txt_rol.setText(cargo);
-    }
-
+//    public void setDatosUsuario(String nombre, String cargo) {
+//        txt_nombre.setText(nombre);
+//       // txt_rol.setText(cargo);
+//    }
     private int obtenerIdUsuario(String nombre) {
         String sql = "select * from tb_usuario where nombre = '" + nombre + "'";
         Statement st;
