@@ -9,6 +9,7 @@ import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.time.DayOfWeek;
 import java.time.LocalDate;
+import java.time.LocalTime;
 import java.time.format.TextStyle;
 import java.util.Locale;
 
@@ -30,6 +31,10 @@ public class diasSEmana {
 
         System.out.println("Hoy es: " + nombreDiaSemana);
 
-       
+           // Obtener la hora actual
+        LocalTime horaActual = LocalTime.now();
+
+        // Imprimir la hora actual en el formato "HH:mm:ss"
+        System.out.println("Hora actual: " + horaActual);
     }
 }

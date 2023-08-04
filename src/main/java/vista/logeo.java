@@ -133,7 +133,7 @@ public class logeo extends javax.swing.JFrame {
         jLabel3.setText("USUARIO");
         jPanel1.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 250, -1, -1));
 
-        jLabel1.setIcon(new javax.swing.ImageIcon("C:\\Users\\SAID\\Downloads\\Im_Pr\\56767481-9110-4d0b-bf32-0fc5f4d6f770.jpeg")); // NOI18N
+        jLabel1.setIcon(new javax.swing.ImageIcon("C:\\Users\\Jefferson\\Pictures\\Saved Pictures\\inicio.png")); // NOI18N
         jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 90, 80, 70));
 
         jLabel4.setFont(new java.awt.Font("Arial", 3, 14)); // NOI18N

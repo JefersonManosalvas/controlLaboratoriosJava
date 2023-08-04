@@ -13,6 +13,7 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.time.DayOfWeek;
 import java.time.LocalDate;
+import java.time.LocalTime;
 import java.time.format.TextStyle;
 import java.util.HashMap;
 import java.util.Locale;
@@ -63,9 +64,19 @@ public class Registrarse extends javax.swing.JFrame {
 
         return nombreDiaSemana;
     }
+    
+    public LocalTime hora_actual(){
+            // Obtener la hora actual
+        LocalTime horaActual = LocalTime.now();
+
+        // Imprimir la hora actual en el formato "HH:mm:ss"
+        System.out.println("Hora actual: " + horaActual);
+        
+        return horaActual;
+    }
 
     public void cargar(String lab) throws ClassNotFoundException, SQLException {
-        String sql = ("call acceso_lab.horarios('" + diaSemana() + "', '" + lab + "');");
+        String sql = ("call acceso_lab.horarios('" + diaSemana() + "', '" + lab + "','"+hora_actual()+"');");
         System.out.println("---" + sql);
 
         conMysql c1 = new conMysql();
