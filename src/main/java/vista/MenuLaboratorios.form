@@ -47,7 +47,7 @@
         <Component class="javax.swing.JButton" name="btnCisco">
           <Properties>
             <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-              <Image iconType="2" name="C:\Users\Jefferson\Pictures\Saved Pictures\descarga.png"/>
+              <Image iconType="2" name="C:\Users\SAID\Downloads\Im_Pr\cisco.jpeg"/>
             </Property>
             <Property name="text" type="java.lang.String" value="cisco"/>
           </Properties>
@@ -63,7 +63,7 @@
         <Component class="javax.swing.JButton" name="btnSoftware">
           <Properties>
             <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-              <Image iconType="2" name="C:\Users\Jefferson\Pictures\Saved Pictures\DESARROLO DE SOFTWARE.png"/>
+              <Image iconType="2" name="C:\Users\SAID\Downloads\Im_Pr\Desarrollo de Software.jpeg"/>
             </Property>
             <Property name="text" type="java.lang.String" value="desarrollo de software"/>
           </Properties>

@@ -110,6 +110,8 @@ public class login {
                 me.setcedula(usuario);
                 me.setVisible(true);
 
+                
+                
             } else if (existe == 4) {
 
                 // JOptionPane.showMessageDialog(null, "Usuario estudiante");

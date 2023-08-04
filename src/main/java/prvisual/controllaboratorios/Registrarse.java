@@ -33,6 +33,34 @@ public class Registrarse extends javax.swing.JFrame {
     public String getCedula() {
         return cedula;
     }
+    
+      public void btndocente() throws SQLException{
+        String con = "select rol from tb_usuario where usuario ='"+cedula+"';";
+          System.out.println("////"+con);
+        conMysql s1=new conMysql();
+        try {
+            ResultSet rs= s1.EjecutaSql(con);
+            
+            if (rs.next()) {
+               
+               String cargo = rs.getString("rol");
+                System.out.println("////"+cargo);
+                String rol = "Docente" ;
+                     
+                  if (cargo .equals(rol)) {
+              btn_re.setVisible(true);
+        } else {
+            btn_re.setVisible(false);
+        }
+                
+               
+            } else {
+            }
+        } catch (ClassNotFoundException ex) {
+            Logger.getLogger(Registrarse.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    
+    }
 
     public void setCedula(String cedula) {
         this.cedula = cedula;
@@ -110,7 +138,6 @@ public class Registrarse extends javax.swing.JFrame {
         REGISTRARSE = new javax.swing.JButton();
         jPanel4 = new javax.swing.JPanel();
         jPanel5 = new javax.swing.JPanel();
-        jPanel6 = new javax.swing.JPanel();
         txtLaboratorio = new javax.swing.JTextField();
         txt_nombre = new javax.swing.JTextField();
         txtDia = new javax.swing.JTextField();
@@ -121,6 +148,8 @@ public class Registrarse extends javax.swing.JFrame {
         jLabel2 = new javax.swing.JLabel();
         cbxMateria = new javax.swing.JComboBox<>();
         jLabel5 = new javax.swing.JLabel();
+        btn_re = new javax.swing.JButton();
+        jPanel6 = new javax.swing.JPanel();
 
         jLabel3.setText("jLabel3");
 
@@ -169,7 +198,7 @@ public class Registrarse extends javax.swing.JFrame {
                 REGISTRARSEActionPerformed(evt);
             }
         });
-        jPanel1.add(REGISTRARSE, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 370, -1, 50));
+        jPanel1.add(REGISTRARSE, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 340, -1, 50));
 
         jPanel4.setBackground(new java.awt.Color(51, 153, 255));
         jPanel4.setForeground(new java.awt.Color(51, 153, 255));
@@ -202,22 +231,6 @@ public class Registrarse extends javax.swing.JFrame {
 
         jPanel1.add(jPanel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 0, 10, 450));
 
-        jPanel6.setBackground(new java.awt.Color(51, 153, 255));
-        jPanel6.setForeground(new java.awt.Color(51, 153, 255));
-
-        javax.swing.GroupLayout jPanel6Layout = new javax.swing.GroupLayout(jPanel6);
-        jPanel6.setLayout(jPanel6Layout);
-        jPanel6Layout.setHorizontalGroup(
-            jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 410, Short.MAX_VALUE)
-        );
-        jPanel6Layout.setVerticalGroup(
-            jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 10, Short.MAX_VALUE)
-        );
-
-        jPanel1.add(jPanel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 440, -1, -1));
-
         txtLaboratorio.setEnabled(false);
         jPanel1.add(txtLaboratorio, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 220, 170, -1));
 
@@ -249,7 +262,31 @@ public class Registrarse extends javax.swing.JFrame {
         jLabel5.setText("REGISTRO DE ASISTENCIA");
         jPanel1.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 50, 280, -1));
 
+        btn_re.setText("REPORTE");
+        btn_re.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_reActionPerformed(evt);
+            }
+        });
+        jPanel1.add(btn_re, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 400, 90, 40));
+
         getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 370, 450));
+
+        jPanel6.setBackground(new java.awt.Color(51, 153, 255));
+        jPanel6.setForeground(new java.awt.Color(51, 153, 255));
+
+        javax.swing.GroupLayout jPanel6Layout = new javax.swing.GroupLayout(jPanel6);
+        jPanel6.setLayout(jPanel6Layout);
+        jPanel6Layout.setHorizontalGroup(
+            jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 380, Short.MAX_VALUE)
+        );
+        jPanel6Layout.setVerticalGroup(
+            jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 10, Short.MAX_VALUE)
+        );
+
+        getContentPane().add(jPanel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 450, 380, -1));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -278,6 +315,10 @@ public class Registrarse extends javax.swing.JFrame {
 }
 
     }//GEN-LAST:event_REGISTRARSEActionPerformed
+
+    private void btn_reActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_reActionPerformed
+        
+    }//GEN-LAST:event_btn_reActionPerformed
 
     public void consultar(String cedula) throws SQLException {
         String consulta = ("SELECT CONCAT(nombre, ' ', apellido) AS nombre_completo FROM acceso_lab.tb_usuario WHERE usuario = '" + cedula + "';");
@@ -336,6 +377,7 @@ public class Registrarse extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton REGISTRARSE;
+    private javax.swing.JButton btn_re;
     private javax.swing.JComboBox<String> cbxMateria;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;

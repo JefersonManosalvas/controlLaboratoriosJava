@@ -32,6 +32,7 @@ public class MenuLaboratorios extends javax.swing.JFrame {
 
     }
 
+  
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -52,7 +53,7 @@ public class MenuLaboratorios extends javax.swing.JFrame {
         jPanel1.setBackground(new java.awt.Color(255, 255, 255));
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        btnCisco.setIcon(new javax.swing.ImageIcon("C:\\Users\\Jefferson\\Pictures\\Saved Pictures\\descarga.png")); // NOI18N
+        btnCisco.setIcon(new javax.swing.ImageIcon("C:\\Users\\SAID\\Downloads\\Im_Pr\\cisco.jpeg")); // NOI18N
         btnCisco.setText("cisco");
         btnCisco.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -61,7 +62,7 @@ public class MenuLaboratorios extends javax.swing.JFrame {
         });
         jPanel1.add(btnCisco, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 60, 160, 210));
 
-        btnSoftware.setIcon(new javax.swing.ImageIcon("C:\\Users\\Jefferson\\Pictures\\Saved Pictures\\DESARROLO DE SOFTWARE.png")); // NOI18N
+        btnSoftware.setIcon(new javax.swing.ImageIcon("C:\\Users\\SAID\\Downloads\\Im_Pr\\Desarrollo de Software.jpeg")); // NOI18N
         btnSoftware.setText("desarrollo de software");
         btnSoftware.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -100,7 +101,7 @@ public class MenuLaboratorios extends javax.swing.JFrame {
             System.out.println("777 "+Cedula_est);
             reg.cargar(btnCisco.getText());
             reg.setCedula(Cedula_est);
-
+            reg.btndocente();
             reg.setVisible(true);
             dispose();
         } catch (ClassNotFoundException | SQLException ex) {
@@ -117,7 +118,7 @@ public class MenuLaboratorios extends javax.swing.JFrame {
             reg.cargar(btnSoftware.getText());
             reg.setCedula(Cedula_est);
             reg.setVisible(true);
-
+            reg.btndocente();
             dispose();
         } catch (ClassNotFoundException | SQLException ex) {
             Logger.getLogger(MenuLaboratorios.class.getName()).log(Level.SEVERE, null, ex);

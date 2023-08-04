@@ -43,9 +43,7 @@ public class GestionLaboratorios extends javax.swing.JFrame {
         jScrollPane1 = new javax.swing.JScrollPane();
         tb_laboratorios = new javax.swing.JTable();
         jLabel1 = new javax.swing.JLabel();
-        jLabel2 = new javax.swing.JLabel();
         txt_nombre = new javax.swing.JTextField();
-        txt_ubicacion = new javax.swing.JTextField();
         jLabel3 = new javax.swing.JLabel();
         jButton1 = new javax.swing.JButton();
         jButton2 = new javax.swing.JButton();
@@ -67,8 +65,6 @@ public class GestionLaboratorios extends javax.swing.JFrame {
         jScrollPane1.setViewportView(tb_laboratorios);
 
         jLabel1.setText("NOMBRE");
-
-        jLabel2.setText("UBICACION DE DONDE QUEDA EL LAB");
 
         jLabel3.setText("INGRESAR LABORATORIOS");
 
@@ -100,43 +96,37 @@ public class GestionLaboratorios extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(210, 210, 210)
-                        .addComponent(jLabel3))
-                    .addGroup(layout.createSequentialGroup()
                         .addGap(69, 69, 69)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 433, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addGroup(layout.createSequentialGroup()
-                                .addComponent(jButton1)
-                                .addGap(90, 90, 90)
-                                .addComponent(jButton2)
-                                .addGap(63, 63, 63)
-                                .addComponent(jButton3))
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                    .addComponent(jLabel1)
+                                    .addComponent(jButton1))
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jLabel2)
-                                    .addComponent(jLabel1))
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 23, Short.MAX_VALUE)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(txt_nombre, javax.swing.GroupLayout.PREFERRED_SIZE, 154, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(txt_ubicacion, javax.swing.GroupLayout.PREFERRED_SIZE, 154, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addGap(128, 128, 128)))))
-                .addContainerGap(18, Short.MAX_VALUE))
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addGap(90, 90, 90)
+                                        .addComponent(jButton2)
+                                        .addGap(63, 63, 63)
+                                        .addComponent(jButton3))
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addGap(67, 67, 67)
+                                        .addComponent(txt_nombre, javax.swing.GroupLayout.PREFERRED_SIZE, 154, javax.swing.GroupLayout.PREFERRED_SIZE))))))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(210, 210, 210)
+                        .addComponent(jLabel3)))
+                .addContainerGap(97, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jLabel3)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 44, Short.MAX_VALUE)
+                .addGap(68, 68, 68)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(txt_nombre, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel1))
-                .addGap(36, 36, 36)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel2)
-                    .addComponent(txt_ubicacion, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
+                    .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txt_nombre, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 50, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jButton1)
                     .addComponent(jButton2)
@@ -167,9 +157,9 @@ try {
         if (count > 0) {
             JOptionPane.showMessageDialog(null, "Ya existe un laboratorio con ese nombre. Intente con otro nombre.", "Error", JOptionPane.ERROR_MESSAGE);
         } else {
-            PreparedStatement ps = con.prepareStatement("INSERT INTO `laboratorios` (nombre, ubicacion) VALUES (?, ?)");
+            PreparedStatement ps = con.prepareStatement("INSERT INTO `laboratorios` (nombre) VALUES (?)");
             ps.setString(1, nombreLaboratorio);
-            ps.setString(2, txt_ubicacion.getText());
+           
 
             ps.executeUpdate();
             JOptionPane.showMessageDialog(null, "Datos registrados");
@@ -206,17 +196,17 @@ try {
          if (idLaboratorio != -1) {
         try {
             String nombre = txt_nombre.getText();
-            String ubicacion = txt_ubicacion.getText();
+        
 
             // Verificar que se haya seleccionado un laboratorio
-            if (nombre.isEmpty() || ubicacion.isEmpty()) {
+            if (nombre.isEmpty()) {
                 JOptionPane.showMessageDialog(this, "Debe llenar todos los campos antes de actualizar.", "Error", JOptionPane.ERROR_MESSAGE);
             } else {
                 Connection cn = conexion.conectar();
                 PreparedStatement pst = cn.prepareStatement(
-                    "UPDATE laboratorios SET nombre = ?, ubicacion = ? WHERE idLaboratorio = ?");
+                    "UPDATE laboratorios SET nombre = ? WHERE idLaboratorio = ?");
                 pst.setString(1, nombre);
-                pst.setString(2, ubicacion);
+                
                 pst.setInt(3, idLaboratorio);
 
                 int resultado = pst.executeUpdate();
@@ -320,18 +310,16 @@ try {
     private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JScrollPane jScrollPane1;
     public static javax.swing.JTable tb_laboratorios;
     private javax.swing.JTextField txt_nombre;
-    private javax.swing.JTextField txt_ubicacion;
     // End of variables declaration//GEN-END:variables
 
 public void limpiar(){
 
 txt_nombre.setText("");
-txt_ubicacion.setText("");
+
 
 }
 
@@ -347,7 +335,7 @@ private void mostrarLaboratoriosEnTabla() {
                 tableModel = new DefaultTableModel();
                 tableModel.addColumn("ID");
                 tableModel.addColumn("Nombre");
-                tableModel.addColumn("Ubicación");
+              
 
                 tb_laboratorios.setModel(tableModel);
             }
@@ -357,9 +345,9 @@ private void mostrarLaboratoriosEnTabla() {
             while (rs.next()) {
                 int idLaboratorio = rs.getInt("idLaboratorio");
                 String nombre = rs.getString("nombre");
-                String ubicacion = rs.getString("ubicacion");
+             
 
-                Object[] rowData = {idLaboratorio, nombre, ubicacion};
+                Object[] rowData = {idLaboratorio, nombre};
 
                 tableModel.addRow(rowData);
             }
@@ -398,7 +386,7 @@ private void EnviarDatosClienteSeleccionado(int idLaboratorio) {
             ResultSet rs = pst.executeQuery();
             if (rs.next()) {
                 txt_nombre.setText(rs.getString("nombre"));
-                txt_ubicacion.setText(rs.getString("ubicacion"));
+            
           
                
             }

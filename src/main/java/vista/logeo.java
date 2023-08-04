@@ -159,8 +159,9 @@ public class logeo extends javax.swing.JFrame {
         txtcontrasenia.setBorder(null);
         jPanel1.add(txtcontrasenia, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 350, 150, 20));
 
+        jLabel5.setIcon(new javax.swing.ImageIcon("C:\\Users\\SAID\\Downloads\\Im_Pr\\56767481-9110-4d0b-bf32-0fc5f4d6f770.jpeg")); // NOI18N
         jLabel5.setText("jLabel5");
-        jPanel1.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 120, -1, -1));
+        jPanel1.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 90, 70, -1));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
