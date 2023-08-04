@@ -4,7 +4,7 @@
  */
 package prvisual.controllaboratorios;
 
-import conexion.conexion;
+import conecxion.conexion;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.sql.Connection;

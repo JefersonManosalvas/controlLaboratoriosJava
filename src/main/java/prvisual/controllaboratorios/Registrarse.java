@@ -5,7 +5,7 @@
 package prvisual.controllaboratorios;
 
 import conecxion.conMysql;
-import conexion.conexion;
+import conecxion.conexion;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -246,25 +246,25 @@ public class Registrarse extends javax.swing.JFrame {
     private void REGISTRARSEActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_REGISTRARSEActionPerformed
 
         try {
-
-            String nombreSeleccionado = cbxMateria.getSelectedItem().toString();
-            String idSeleccionado = labMap.get(nombreSeleccionado);
-                String lab = txtLaboratorio.getText();
-                String combo= cbxMateria.getSelectedItem().toString();
-            if (lab.isEmpty()||combo.isEmpty()) {
-                JOptionPane.showMessageDialog(null, "tiene campos vacios");
-            } else {
-
-                String insertar = ("INSERT INTO `acceso_lab`.`tb_ingreso_laboratorio` (`Usuario`, `idHorario`) VALUES ('" + cedula + "','" + idSeleccionado + "')");
-                System.out.println("888 " + insertar);
-                // JOptionPane.showMessageDialog(null, "Datos registrados");
-                conMysql c1 = new conMysql();
-                c1.EjecutaSqlIUD(insertar);
-            }
-        } catch (ClassNotFoundException ex) {
-            Logger.getLogger(Registrarse.class.getName()).log(Level.SEVERE, null, ex);
-        }
-
+    String nombreSeleccionado = cbxMateria.getSelectedItem().toString();
+    String idSeleccionado = labMap.get(nombreSeleccionado);
+    String lab = txtLaboratorio.getText();
+    String combo = cbxMateria.getSelectedItem().toString();
+    
+    if (lab.isEmpty() || combo.isEmpty()) {
+        JOptionPane.showMessageDialog(null, "Tiene campos vacíos");
+    } else {
+        String insertar = ("INSERT INTO `acceso_lab`.`tb_ingreso_laboratorio` (`Usuario`, `idHorario`) VALUES ('" + cedula + "','" + idSeleccionado + "')");
+        System.out.println("888 " + insertar);
+        
+        conMysql c1 = new conMysql();
+        c1.EjecutaSqlIUD(insertar);
+        
+        JOptionPane.showMessageDialog(null, "Registro exitoso");
+    }
+} catch (ClassNotFoundException ex) {
+    Logger.getLogger(Registrarse.class.getName()).log(Level.SEVERE, null, ex);
+}
 
     }//GEN-LAST:event_REGISTRARSEActionPerformed
 
