@@ -25,13 +25,12 @@ public class ctr_Usuario {
         boolean respuesta = false;
         Connection cn = conexion.conectar();
         try {
-            PreparedStatement consulta = cn.prepareStatement("insert into tb_usuario values(?,?,?,?,?,?)");
-            consulta.setInt(1, 0);//id
-            consulta.setString(2, objeto.getNombre());
-            consulta.setString(3, objeto.getApellido());
-            consulta.setString(4, objeto.getUsuario());
-            consulta.setString(5, objeto.getPassword());
-            consulta.setString(6, objeto.getRol());
+            PreparedStatement consulta = cn.prepareStatement("insert into tb_usuario values(?,?,?,?,?)");
+            consulta.setString(1, objeto.getNombre());
+            consulta.setString(2, objeto.getApellido());
+            consulta.setString(3, objeto.getUsuario());
+            consulta.setString(4, objeto.getPassword());
+            consulta.setString(5, objeto.getRol());
        
             if (consulta.executeUpdate() > 0) {
                 respuesta = true;
@@ -59,23 +58,7 @@ public class ctr_Usuario {
         return respuesta;
     }
 
-    public boolean loginUser(Usuario objeto) {
-        boolean respuesta = false;
-        Connection cn = conexion.conectar();
-        String sql = "select  usuario, password from tb_usuario where usuario = '" + objeto.getUsuario() + "' and password = '" + objeto.getPassword() + "'";
-        Statement st;
-        try {
-            st = cn.createStatement();
-            ResultSet rs = st.executeQuery(sql);
-            while (rs.next()) {
-                respuesta = true;
-            }
-        } catch (SQLException e) {
-            System.out.println("Error al Iniciar Sesion");
-            JOptionPane.showMessageDialog(null, "Error al Iniciar Sesion");
-        }
-        return respuesta;
-    }
+ 
     
 }
 

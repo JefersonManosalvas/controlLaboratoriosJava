@@ -178,7 +178,7 @@ public class Nuevo_usuario extends javax.swing.JFrame {
         jPanel5.add(lblnombreusuario, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 66, 71, -1));
         jPanel5.add(txt_nombreu, new org.netbeans.lib.awtextra.AbsoluteConstraints(181, 66, 162, -1));
 
-        cbx_rol.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Ingrese Rol :", "Estudiante", "Docente" }));
+        cbx_rol.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Estudiante", "Docente" }));
         jPanel5.add(cbx_rol, new org.netbeans.lib.awtextra.AbsoluteConstraints(171, 288, 162, -1));
 
         getContentPane().add(jPanel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, 390, 440));
