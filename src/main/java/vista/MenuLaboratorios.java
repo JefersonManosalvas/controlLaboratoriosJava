@@ -4,12 +4,8 @@
  */
 package vista;
 
-import atributosYmetodos.login;
+
 import java.sql.SQLException;
-import java.time.DayOfWeek;
-import java.time.LocalDate;
-import java.time.format.TextStyle;
-import java.util.Locale;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import prvisual.controllaboratorios.Registrarse;
@@ -101,6 +97,7 @@ public class MenuLaboratorios extends javax.swing.JFrame {
         try {
             reg = new Registrarse();
             reg.consultar(Cedula_est);
+            System.out.println("777 "+Cedula_est);
             reg.cargar(btnCisco.getText());
             reg.setCedula(Cedula_est);
 

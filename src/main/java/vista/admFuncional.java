@@ -232,7 +232,7 @@ public final class admFuncional extends javax.swing.JFrame {
 
                 String nombre = resultSet.getString("nombre");
                 cbxlab.addItem(nombre);
-                labMap.put(nombre, id);
+               labMap.put(nombre, id);
             }
         } catch (SQLException e) {
         } catch (ClassNotFoundException ex) {

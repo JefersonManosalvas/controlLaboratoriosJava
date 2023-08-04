@@ -12,7 +12,6 @@ import vista.MenuLaboratorios;
 import vista.admFuncional;
 
 import prvisual.controllaboratorios.Nuevo_usuario;
-import prvisual.controllaboratorios.Registrarse;
 
 /**
  *
@@ -105,7 +104,11 @@ public class login {
 
 //}
             } else if (existe == 3) {
-                JOptionPane.showMessageDialog(null, "Usuario docente");
+                // JOptionPane.showMessageDialog(null, "Usuario docente");
+
+                MenuLaboratorios me = new MenuLaboratorios();
+                me.setcedula(usuario);
+                me.setVisible(true);
 
             } else if (existe == 4) {
 
