@@ -362,4 +362,8 @@ public class Registrarse extends javax.swing.JFrame {
         return 0;
     }
 
+    public String getString(String nombre) {
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    }
+
 }
