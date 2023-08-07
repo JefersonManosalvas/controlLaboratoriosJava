@@ -74,10 +74,8 @@ public class Registrarse extends javax.swing.JFrame {
     public Registrarse() throws ClassNotFoundException {
 
         initComponents();
-        //this.CargarComboCategorias();
         setLocationRelativeTo(null);
         diaSemana();
-        //cargar();
 
     }
 
