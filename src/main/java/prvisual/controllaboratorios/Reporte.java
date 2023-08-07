@@ -4,17 +4,32 @@
  */
 package prvisual.controllaboratorios;
 
+import conecxion.conexion;
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Statement;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.ArrayList;
+import java.util.Calendar;
+import java.util.Date;
+import java.util.List;
+import javax.swing.DefaultComboBoxModel;
+import javax.swing.JOptionPane;
+import javax.swing.table.DefaultTableModel;
+
 /**
  *
  * @author SAID
  */
 public class Reporte extends javax.swing.JFrame {
 
-    /**
-     * Creates new form Reporte
-     */
+ private String fechaSeleccionada;
     public Reporte() {
         initComponents();
+          setLocationRelativeTo(null);
     }
 
     /**
@@ -27,14 +42,16 @@ public class Reporte extends javax.swing.JFrame {
     private void initComponents() {
 
         jPanel1 = new javax.swing.JPanel();
-        jComboBox1 = new javax.swing.JComboBox<>();
+        jComboBoxMaterias = new javax.swing.JComboBox<>();
         jButton1 = new javax.swing.JButton();
         jScrollPane2 = new javax.swing.JScrollPane();
-        jTable2 = new javax.swing.JTable();
+        tablaClientes = new javax.swing.JTable();
         jPanel4 = new javax.swing.JPanel();
         jPanel5 = new javax.swing.JPanel();
         jPanel6 = new javax.swing.JPanel();
         jPanel7 = new javax.swing.JPanel();
+        jLabel1 = new javax.swing.JLabel();
+        jDateChooser1 = new com.toedter.calendar.JDateChooser();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -43,8 +60,13 @@ public class Reporte extends javax.swing.JFrame {
         jPanel1.setBorder(javax.swing.BorderFactory.createEtchedBorder());
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
-        jPanel1.add(jComboBox1, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 60, 210, 50));
+        jComboBoxMaterias.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        jComboBoxMaterias.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jComboBoxMateriasActionPerformed(evt);
+            }
+        });
+        jPanel1.add(jComboBoxMaterias, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 80, 210, 50));
 
         jButton1.setBackground(new java.awt.Color(51, 153, 255));
         jButton1.setFont(new java.awt.Font("Segoe UI Black", 2, 14)); // NOI18N
@@ -55,9 +77,9 @@ public class Reporte extends javax.swing.JFrame {
                 jButton1ActionPerformed(evt);
             }
         });
-        jPanel1.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 60, 106, 37));
+        jPanel1.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 80, 106, 40));
 
-        jTable2.setModel(new javax.swing.table.DefaultTableModel(
+        tablaClientes.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null},
                 {null, null, null, null},
@@ -65,12 +87,12 @@ public class Reporte extends javax.swing.JFrame {
                 {null, null, null, null}
             },
             new String [] {
-                "Title 1", "Title 2", "Title 3", "Title 4"
+                "Nombre", "Apellido", "Fecha_Registro", "Materia"
             }
         ));
-        jScrollPane2.setViewportView(jTable2);
+        jScrollPane2.setViewportView(tablaClientes);
 
-        jPanel1.add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 140, 540, 310));
+        jPanel1.add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 160, 540, 310));
 
         jPanel4.setBackground(new java.awt.Color(51, 153, 255));
         jPanel4.setForeground(new java.awt.Color(51, 153, 255));
@@ -79,14 +101,14 @@ public class Reporte extends javax.swing.JFrame {
         jPanel4.setLayout(jPanel4Layout);
         jPanel4Layout.setHorizontalGroup(
             jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 590, Short.MAX_VALUE)
+            .addGap(0, 0, Short.MAX_VALUE)
         );
         jPanel4Layout.setVerticalGroup(
             jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 20, Short.MAX_VALUE)
+            .addGap(0, 0, Short.MAX_VALUE)
         );
 
-        jPanel1.add(jPanel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 590, 20));
+        jPanel1.add(jPanel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 590, 10));
 
         jPanel5.setBackground(new java.awt.Color(51, 153, 255));
         jPanel5.setForeground(new java.awt.Color(51, 153, 255));
@@ -95,11 +117,11 @@ public class Reporte extends javax.swing.JFrame {
         jPanel5.setLayout(jPanel5Layout);
         jPanel5Layout.setHorizontalGroup(
             jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 590, Short.MAX_VALUE)
+            .addGap(0, 0, Short.MAX_VALUE)
         );
         jPanel5Layout.setVerticalGroup(
             jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 10, Short.MAX_VALUE)
+            .addGap(0, 0, Short.MAX_VALUE)
         );
 
         jPanel1.add(jPanel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 480, -1, -1));
@@ -110,11 +132,11 @@ public class Reporte extends javax.swing.JFrame {
         jPanel6.setLayout(jPanel6Layout);
         jPanel6Layout.setHorizontalGroup(
             jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 10, Short.MAX_VALUE)
+            .addGap(0, 0, Short.MAX_VALUE)
         );
         jPanel6Layout.setVerticalGroup(
             jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 470, Short.MAX_VALUE)
+            .addGap(0, 0, Short.MAX_VALUE)
         );
 
         jPanel1.add(jPanel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(580, 10, 10, 470));
@@ -125,14 +147,30 @@ public class Reporte extends javax.swing.JFrame {
         jPanel7.setLayout(jPanel7Layout);
         jPanel7Layout.setHorizontalGroup(
             jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 10, Short.MAX_VALUE)
+            .addGap(0, 0, Short.MAX_VALUE)
         );
         jPanel7Layout.setVerticalGroup(
             jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 470, Short.MAX_VALUE)
+            .addGap(0, 0, Short.MAX_VALUE)
         );
 
         jPanel1.add(jPanel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 10, 10, 470));
+
+        jLabel1.setFont(new java.awt.Font("Segoe UI Black", 2, 24)); // NOI18N
+        jLabel1.setText("REPORTES");
+        jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 10, -1, -1));
+
+        jDateChooser1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jDateChooser1MouseClicked(evt);
+            }
+        });
+        jDateChooser1.addPropertyChangeListener(new java.beans.PropertyChangeListener() {
+            public void propertyChange(java.beans.PropertyChangeEvent evt) {
+                jDateChooser1PropertyChange(evt);
+            }
+        });
+        jPanel1.add(jDateChooser1, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 40, 160, 40));
 
         getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 590, 510));
 
@@ -140,8 +178,70 @@ public class Reporte extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        // TODO add your handling code here:
+      
+          
+    
+      String materiaSeleccionada = jComboBoxMaterias.getSelectedItem().toString();
+
+   
+    if (fechaSeleccionada == null || fechaSeleccionada.isEmpty()) {
+        JOptionPane.showMessageDialog(null, 
+                "Seleccione una fecha antes de buscar");
+     
+    }
+
+    String sql = "SELECT nombre, apellido, fecha_registro, materia FROM tb_usuario "
+               + "JOIN tb_ingreso_laboratorio ON tb_usuario.usuario = tb_ingreso_laboratorio.usuario "
+               + "JOIN tb_horarios ON tb_ingreso_laboratorio.idHorario = tb_horarios.idHorario "
+               + "WHERE materia = ? AND DATE(fecha_registro) = ?";
+
+    Connection cn = conexion.conectar();
+    try (PreparedStatement ps = cn.prepareStatement(sql)) {
+        ps.setString(1, materiaSeleccionada);
+        ps.setString(2, fechaSeleccionada);
+        ResultSet rs = ps.executeQuery();
+
+        DefaultTableModel model = (DefaultTableModel) tablaClientes.getModel();
+        model.setRowCount(0); 
+
+        while (rs.next()) {
+            String nombre = rs.getString("nombre");
+            String apellido = rs.getString("apellido");
+            String fecha = rs.getString("fecha_registro");
+            String materia = rs.getString("materia");
+            Object[] fila = {nombre, apellido, fecha, materia};
+            model.addRow(fila);
+        }
+
+        cn.close();
+    } catch (SQLException e) {
+        System.out.println("¡Error al buscar registros!, " + e);
+    }
+        
     }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void jComboBoxMateriasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBoxMateriasActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jComboBoxMateriasActionPerformed
+
+    private void jDateChooser1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jDateChooser1MouseClicked
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jDateChooser1MouseClicked
+
+    private void jDateChooser1PropertyChange(java.beans.PropertyChangeEvent evt) {//GEN-FIRST:event_jDateChooser1PropertyChange
+         if ("date".equals(evt.getPropertyName())) {
+            // Obtener la fecha seleccionada del JDateChooser y convertirla a un formato adecuado
+            SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
+            fechaSeleccionada = dateFormat.format(jDateChooser1.getDate());
+
+            // Realizar una consulta para obtener las materias que coincidan con el día de la semana de la fecha seleccionada
+            String diaSemana = obtenerDiaSemana(fechaSeleccionada);
+            List<String> materias = obtenerMateriasPorDiaSemana(diaSemana);
+
+            // Rellenar el JComboBox con las materias obtenidas
+            jComboBoxMaterias.setModel(new DefaultComboBoxModel<>(materias.toArray(new String[0])));
+        }
+    }//GEN-LAST:event_jDateChooser1PropertyChange
 
     /**
      * @param args the command line arguments
@@ -180,13 +280,55 @@ public class Reporte extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButton1;
-    private javax.swing.JComboBox<String> jComboBox1;
+    private javax.swing.JComboBox<String> jComboBoxMaterias;
+    private com.toedter.calendar.JDateChooser jDateChooser1;
+    private javax.swing.JLabel jLabel1;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel4;
     private javax.swing.JPanel jPanel5;
     private javax.swing.JPanel jPanel6;
     private javax.swing.JPanel jPanel7;
     private javax.swing.JScrollPane jScrollPane2;
-    private javax.swing.JTable jTable2;
+    public static javax.swing.JTable tablaClientes;
     // End of variables declaration//GEN-END:variables
+
+ private String obtenerDiaSemana(String fechaSeleccionada) {
+    SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
+    Date date;
+    try {
+        date = dateFormat.parse(fechaSeleccionada);
+        Calendar calendar = Calendar.getInstance();
+        calendar.setTime(date);
+
+        // Obtener el número del día de la semana (1 = domingo, 2 = lunes, ..., 7 = sábado)
+        int dayOfWeek = calendar.get(Calendar.DAY_OF_WEEK);
+
+        // Asignar el nombre del día de la semana según el número obtenido
+        String[] diasSemana = {"domingo", "lunes", "martes", "miércoles", "jueves", "viernes", "sábado"};
+        return diasSemana[dayOfWeek - 1];
+    } catch (ParseException e) {
+        e.printStackTrace();
+        return null;
+    }
+}
+
+    private List<String> obtenerMateriasPorDiaSemana(String diaSemana) {
+    List<String> materias = new ArrayList<>();
+    Connection cn = conexion.conectar();
+    String sql = "SELECT DISTINCT materia FROM tb_horarios WHERE dia_semana = ?";
+    try (PreparedStatement ps = cn.prepareStatement(sql)) {
+        ps.setString(1, diaSemana);
+        ResultSet rs = ps.executeQuery();
+
+        while (rs.next()) {
+            materias.add(rs.getString("materia"));
+        }
+
+        cn.close();
+    } catch (SQLException e) {
+        e.printStackTrace();
+    }
+
+    return materias;
+}
 }

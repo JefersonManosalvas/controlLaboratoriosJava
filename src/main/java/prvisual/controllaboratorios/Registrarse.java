@@ -317,7 +317,10 @@ public class Registrarse extends javax.swing.JFrame {
     }//GEN-LAST:event_REGISTRARSEActionPerformed
 
     private void btn_reActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_reActionPerformed
-        
+         Reporte repo= new  Reporte();
+   
+       repo.setVisible(true);
+       dispose();
     }//GEN-LAST:event_btn_reActionPerformed
 
     public void consultar(String cedula) throws SQLException {
