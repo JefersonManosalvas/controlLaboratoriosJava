@@ -26,10 +26,11 @@ import javax.swing.table.DefaultTableModel;
  */
 public class Reporte extends javax.swing.JFrame {
 
- private String fechaSeleccionada;
+    private String fechaSeleccionada;
+
     public Reporte() {
         initComponents();
-          setLocationRelativeTo(null);
+        setLocationRelativeTo(null);
     }
 
     /**
@@ -52,6 +53,7 @@ public class Reporte extends javax.swing.JFrame {
         jPanel7 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         jDateChooser1 = new com.toedter.calendar.JDateChooser();
+        jPanel8 = new javax.swing.JPanel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -105,7 +107,7 @@ public class Reporte extends javax.swing.JFrame {
         );
         jPanel4Layout.setVerticalGroup(
             jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 0, Short.MAX_VALUE)
+            .addGap(0, 10, Short.MAX_VALUE)
         );
 
         jPanel1.add(jPanel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 590, 10));
@@ -136,7 +138,7 @@ public class Reporte extends javax.swing.JFrame {
         );
         jPanel6Layout.setVerticalGroup(
             jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 0, Short.MAX_VALUE)
+            .addGap(0, 470, Short.MAX_VALUE)
         );
 
         jPanel1.add(jPanel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(580, 10, 10, 470));
@@ -151,7 +153,7 @@ public class Reporte extends javax.swing.JFrame {
         );
         jPanel7Layout.setVerticalGroup(
             jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 0, Short.MAX_VALUE)
+            .addGap(0, 470, Short.MAX_VALUE)
         );
 
         jPanel1.add(jPanel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 10, 10, 470));
@@ -172,52 +174,62 @@ public class Reporte extends javax.swing.JFrame {
         });
         jPanel1.add(jDateChooser1, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 40, 160, 40));
 
-        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 590, 510));
+        jPanel8.setBackground(new java.awt.Color(51, 153, 255));
+        jPanel8.setForeground(new java.awt.Color(51, 153, 255));
+
+        javax.swing.GroupLayout jPanel8Layout = new javax.swing.GroupLayout(jPanel8);
+        jPanel8.setLayout(jPanel8Layout);
+        jPanel8Layout.setHorizontalGroup(
+            jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 590, Short.MAX_VALUE)
+        );
+        jPanel8Layout.setVerticalGroup(
+            jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 10, Short.MAX_VALUE)
+        );
+
+        jPanel1.add(jPanel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 480, -1, -1));
+
+        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 590, 490));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-      
-          
-    
-      String materiaSeleccionada = jComboBoxMaterias.getSelectedItem().toString();
 
-   
-    if (fechaSeleccionada == null || fechaSeleccionada.isEmpty()) {
-        JOptionPane.showMessageDialog(null, 
-                "Seleccione una fecha antes de buscar");
-     
-    }
+        String materiaSeleccionada = jComboBoxMaterias.getSelectedItem().toString();
 
-    String sql = "SELECT nombre, apellido, fecha_registro, materia FROM tb_usuario "
-               + "JOIN tb_ingreso_laboratorio ON tb_usuario.usuario = tb_ingreso_laboratorio.usuario "
-               + "JOIN tb_horarios ON tb_ingreso_laboratorio.idHorario = tb_horarios.idHorario "
-               + "WHERE materia = ? AND DATE(fecha_registro) = ?";
+        if (fechaSeleccionada == null || fechaSeleccionada.isEmpty()) {
+            JOptionPane.showMessageDialog(null,
+                    "Seleccione una Fecha ");
 
-    Connection cn = conexion.conectar();
-    try (PreparedStatement ps = cn.prepareStatement(sql)) {
-        ps.setString(1, materiaSeleccionada);
-        ps.setString(2, fechaSeleccionada);
-        ResultSet rs = ps.executeQuery();
-
-        DefaultTableModel model = (DefaultTableModel) tablaClientes.getModel();
-        model.setRowCount(0); 
-
-        while (rs.next()) {
-            String nombre = rs.getString("nombre");
-            String apellido = rs.getString("apellido");
-            String fecha = rs.getString("fecha_registro");
-            String materia = rs.getString("materia");
-            Object[] fila = {nombre, apellido, fecha, materia};
-            model.addRow(fila);
         }
 
-        cn.close();
-    } catch (SQLException e) {
-        System.out.println("¡Error al buscar registros!, " + e);
-    }
-        
+             String sql = "{ CALL BuscarRegistrosPorFechaYMateria(?, ?) }";;
+
+        Connection cn = conexion.conectar();
+        try (PreparedStatement ps = cn.prepareStatement(sql)) {
+            ps.setString(1, materiaSeleccionada);
+            ps.setString(2, fechaSeleccionada);
+            ResultSet rs = ps.executeQuery();
+
+            DefaultTableModel model = (DefaultTableModel) tablaClientes.getModel();
+            model.setRowCount(0);
+
+            while (rs.next()) {
+                String nombre = rs.getString("nombre");
+                String apellido = rs.getString("apellido");
+                String fecha = rs.getString("fecha_registro");
+                String materia = rs.getString("materia");
+                Object[] fila = {nombre, apellido, fecha, materia};
+                model.addRow(fila);
+            }
+
+            cn.close();
+        } catch (SQLException e) {
+            System.out.println("¡Error al buscar registros!, " + e);
+        }
+
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jComboBoxMateriasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBoxMateriasActionPerformed
@@ -229,16 +241,12 @@ public class Reporte extends javax.swing.JFrame {
     }//GEN-LAST:event_jDateChooser1MouseClicked
 
     private void jDateChooser1PropertyChange(java.beans.PropertyChangeEvent evt) {//GEN-FIRST:event_jDateChooser1PropertyChange
-         if ("date".equals(evt.getPropertyName())) {
-            // Obtener la fecha seleccionada del JDateChooser y convertirla a un formato adecuado
+        if ("date".equals(evt.getPropertyName())) {
+
             SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
             fechaSeleccionada = dateFormat.format(jDateChooser1.getDate());
-
-            // Realizar una consulta para obtener las materias que coincidan con el día de la semana de la fecha seleccionada
             String diaSemana = obtenerDiaSemana(fechaSeleccionada);
             List<String> materias = obtenerMateriasPorDiaSemana(diaSemana);
-
-            // Rellenar el JComboBox con las materias obtenidas
             jComboBoxMaterias.setModel(new DefaultComboBoxModel<>(materias.toArray(new String[0])));
         }
     }//GEN-LAST:event_jDateChooser1PropertyChange
@@ -288,47 +296,44 @@ public class Reporte extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel5;
     private javax.swing.JPanel jPanel6;
     private javax.swing.JPanel jPanel7;
+    private javax.swing.JPanel jPanel8;
     private javax.swing.JScrollPane jScrollPane2;
     public static javax.swing.JTable tablaClientes;
     // End of variables declaration//GEN-END:variables
 
- private String obtenerDiaSemana(String fechaSeleccionada) {
-    SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
-    Date date;
-    try {
-        date = dateFormat.parse(fechaSeleccionada);
-        Calendar calendar = Calendar.getInstance();
-        calendar.setTime(date);
-
-        // Obtener el número del día de la semana (1 = domingo, 2 = lunes, ..., 7 = sábado)
-        int dayOfWeek = calendar.get(Calendar.DAY_OF_WEEK);
-
-        // Asignar el nombre del día de la semana según el número obtenido
-        String[] diasSemana = {"domingo", "lunes", "martes", "miércoles", "jueves", "viernes", "sábado"};
-        return diasSemana[dayOfWeek - 1];
-    } catch (ParseException e) {
-        e.printStackTrace();
-        return null;
+    private String obtenerDiaSemana(String fechaSeleccionada) {
+        SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
+        Date date;
+        try {
+            date = dateFormat.parse(fechaSeleccionada);
+            Calendar calendar = Calendar.getInstance();
+            calendar.setTime(date);
+            int dayOfWeek = calendar.get(Calendar.DAY_OF_WEEK);
+            String[] diasSemana = {"domingo", "lunes", "martes", "miércoles", "jueves", "viernes", "sábado"};
+            return diasSemana[dayOfWeek - 1];
+        } catch (ParseException e) {
+            e.printStackTrace();
+            return null;
+        }
     }
-}
 
     private List<String> obtenerMateriasPorDiaSemana(String diaSemana) {
-    List<String> materias = new ArrayList<>();
-    Connection cn = conexion.conectar();
-    String sql = "SELECT DISTINCT materia FROM tb_horarios WHERE dia_semana = ?";
-    try (PreparedStatement ps = cn.prepareStatement(sql)) {
-        ps.setString(1, diaSemana);
-        ResultSet rs = ps.executeQuery();
+        List<String> materias = new ArrayList<>();
+        Connection cn = conexion.conectar();
+       String sql = "{CALL obtenerMateriasPorDiaSemana(?)}";
+        try (PreparedStatement ps = cn.prepareStatement(sql)) {
+            ps.setString(1, diaSemana);
+            ResultSet rs = ps.executeQuery();
 
-        while (rs.next()) {
-            materias.add(rs.getString("materia"));
+            while (rs.next()) {
+                materias.add(rs.getString("materia"));
+            }
+
+            cn.close();
+        } catch (SQLException e) {
+            e.printStackTrace();
         }
 
-        cn.close();
-    } catch (SQLException e) {
-        e.printStackTrace();
+        return materias;
     }
-
-    return materias;
-}
 }

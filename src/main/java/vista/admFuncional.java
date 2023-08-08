@@ -57,7 +57,7 @@ public final class admFuncional extends javax.swing.JFrame {
         txtMateria = new javax.swing.JTextField();
         jScrollPane1 = new javax.swing.JScrollPane();
         tblaconH = new javax.swing.JTable();
-        jButton1 = new javax.swing.JButton();
+        btn_modificar = new javax.swing.JButton();
         jButton2 = new javax.swing.JButton();
         jButton3 = new javax.swing.JButton();
         cbxlab = new javax.swing.JComboBox<>();
@@ -119,10 +119,15 @@ public final class admFuncional extends javax.swing.JFrame {
 
         jPanel1.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 190, 820, 150));
 
-        jButton1.setBackground(new java.awt.Color(51, 153, 255));
-        jButton1.setForeground(new java.awt.Color(255, 255, 255));
-        jButton1.setText("BUSCAR");
-        jPanel1.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 130, -1, -1));
+        btn_modificar.setBackground(new java.awt.Color(51, 153, 255));
+        btn_modificar.setForeground(new java.awt.Color(255, 255, 255));
+        btn_modificar.setText("BUSCAR");
+        btn_modificar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_modificarActionPerformed(evt);
+            }
+        });
+        jPanel1.add(btn_modificar, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 130, -1, -1));
 
         jButton2.setBackground(new java.awt.Color(51, 153, 255));
         jButton2.setForeground(new java.awt.Color(255, 255, 255));
@@ -137,7 +142,7 @@ public final class admFuncional extends javax.swing.JFrame {
                 agregar(evt);
             }
         });
-        jPanel1.add(jButton3, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 130, -1, -1));
+        jPanel1.add(jButton3, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 130, -1, -1));
 
         jPanel1.add(cbxlab, new org.netbeans.lib.awtextra.AbsoluteConstraints(670, 50, 110, -1));
 
@@ -219,6 +224,10 @@ public final class admFuncional extends javax.swing.JFrame {
  
     }//GEN-LAST:event_tblaconHMouseClicked
 
+    private void btn_modificarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_modificarActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btn_modificarActionPerformed
+
     private void cargarDatos() {
         // Conectar a la base de datos
         conMysql c1 = new conMysql();
@@ -239,39 +248,39 @@ public final class admFuncional extends javax.swing.JFrame {
             Logger.getLogger(admFuncional.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
-    public void MOSTRAR_HORARIOS() throws ClassNotFoundException {
+        public void MOSTRAR_HORARIOS() throws ClassNotFoundException {
 
-        String sql = ("SELECT  materia,hora_inicio,hora_fin,dia_semana,nombre,docente FROM tb_horarios,laboratorios where tb_horarios.idLaboratorio=laboratorios.idLaboratorio;");
-        System.out.println("648" + sql);
-        DefaultTableModel modelo = new DefaultTableModel();
-        modelo.addColumn("MATERIA");
-        modelo.addColumn("HORA DE INICIO");
-        modelo.addColumn("HORA DE SALIDA");
-        modelo.addColumn("DIA");
-        modelo.addColumn("LABORATORIO");
-        modelo.addColumn("DOCENTE");
-        tblaconH.setModel(modelo);
-        String[] datos = new String[6];
-        try {
-            conMysql c1 = new conMysql();
-            try (ResultSet res = c1.EjecutaSql(sql)) {
-                while (res.next()) {
-                    datos[0] = res.getString(1);
-                    datos[1] = res.getString(2);
-                    datos[2] = res.getString(3);
-                    datos[3] = res.getString(4);
-                    datos[4] = res.getString(5);
-                     datos[5] = res.getString(6);
-                    modelo.addRow(datos);
-
-                }
-            }
+            String sql = ("SELECT  materia,hora_inicio,hora_fin,dia_semana,nombre,docente FROM tb_horarios,laboratorios where tb_horarios.idLaboratorio=laboratorios.idLaboratorio;");
+            System.out.println("648" + sql);
+            DefaultTableModel modelo = new DefaultTableModel();
+            modelo.addColumn("MATERIA");
+            modelo.addColumn("HORA DE INICIO");
+            modelo.addColumn("HORA DE SALIDA");
+            modelo.addColumn("DIA");
+            modelo.addColumn("LABORATORIO");
+            modelo.addColumn("DOCENTE");
             tblaconH.setModel(modelo);
+            String[] datos = new String[6];
+            try {
+                conMysql c1 = new conMysql();
+                try (ResultSet res = c1.EjecutaSql(sql)) {
+                    while (res.next()) {
+                        datos[0] = res.getString(1);
+                        datos[1] = res.getString(2);
+                        datos[2] = res.getString(3);
+                        datos[3] = res.getString(4);
+                        datos[4] = res.getString(5);
+                         datos[5] = res.getString(6);
+                        modelo.addRow(datos);
 
-        } catch (SQLException e) {
-            JOptionPane.showInternalMessageDialog(null, "error" + e.toString());
+                    }
+                }
+                tblaconH.setModel(modelo);
+
+            } catch (SQLException e) {
+                JOptionPane.showInternalMessageDialog(null, "error" + e.toString());
+            }
         }
-    }
     
     public void limpiar_horario(){
         txtDia.setText("");
@@ -323,8 +332,8 @@ public final class admFuncional extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btn_modificar;
     private javax.swing.JComboBox<String> cbxlab;
-    private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;
     private javax.swing.JLabel jLabel1;

@@ -51,6 +51,7 @@ public class Nuevo_usuario extends javax.swing.JFrame {
         lblnombreusuario = new javax.swing.JLabel();
         txt_nombreu = new javax.swing.JTextField();
         cbx_rol = new javax.swing.JComboBox<>();
+        jButton1 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setUndecorated(true);
@@ -135,7 +136,7 @@ public class Nuevo_usuario extends javax.swing.JFrame {
                 btn_guardarUActionPerformed(evt);
             }
         });
-        jPanel5.add(btn_guardarU, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 360, 171, 40));
+        jPanel5.add(btn_guardarU, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 340, 171, 40));
 
         jLabel2.setFont(new java.awt.Font("Segoe UI Black", 2, 18)); // NOI18N
         jLabel2.setText("X");
@@ -180,6 +181,14 @@ public class Nuevo_usuario extends javax.swing.JFrame {
 
         cbx_rol.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Estudiante", "Docente" }));
         jPanel5.add(cbx_rol, new org.netbeans.lib.awtextra.AbsoluteConstraints(171, 288, 162, -1));
+
+        jButton1.setText("LISTA DE USUARIOS");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
+        jPanel5.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 400, -1, -1));
 
         getContentPane().add(jPanel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, 390, 440));
 
@@ -229,6 +238,11 @@ public class Nuevo_usuario extends javax.swing.JFrame {
          System.exit(0);
     }//GEN-LAST:event_jLabel2MouseClicked
 
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+      Gestionar_Usuario usu=new Gestionar_Usuario();
+      usu.setVisible(true);
+    }//GEN-LAST:event_jButton1ActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -268,6 +282,7 @@ public class Nuevo_usuario extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btn_guardarU;
     private javax.swing.JComboBox<String> cbx_rol;
+    private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JPanel jPanel1;
